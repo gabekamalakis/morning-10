@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "litterlogger",
   "main": "server.js",
-  "scripts": {
-    "test": "console.log('server online')"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabekamalakis/morning-10.git"
