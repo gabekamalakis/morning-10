@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "litterlogger",
   "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabekamalakis/morning-10.git"
