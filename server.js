@@ -1,6 +1,5 @@
 // Importing required libraries
-//const express = require('express');
-import express from "express";
+const express = require('express');
 const application = express();
 
 
