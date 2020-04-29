@@ -24,8 +24,9 @@ $primary: $pink;
 $primary-invert: $pink-invert;
 
 // 4. Import the rest of Bulma
-
 @import "../../node_modules/bulma/bulma";
+
+// 5. Set your own rules?
 html {
-    background-color: $blue-invert;
+    background-color: $pink;
 }
