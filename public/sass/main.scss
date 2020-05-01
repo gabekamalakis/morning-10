@@ -52,11 +52,19 @@ $body-background-color: $beige-lighter;
 $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
+$navbar-breakpoint: 768px;
 
 @import "../../node_modules/bulma/bulma";
 
 .navbar-item {
     font-size: 1.2rem;
+    -webkit-transition-duration: 0.01s;
+    transition-duration: 0.01s;
+}
+
+.navbar-item:hover {
+    -webkit-transition-duration: 0.075s;
+    transition-duration: 0.075s;
 }
 
 .navbar {
