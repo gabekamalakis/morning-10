@@ -12,37 +12,39 @@
   </head>
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="index.html">
-          <strong>LitterLog<i class="far fa-trash-alt"></i></strong>
-        </a>
-
-        <a
-          role="button"
-          class="navbar-burger burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div class="navbar-start"></div>
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-end">
+      <div class="container">
+        <div class="navbar-brand">
           <a class="navbar-item" href="index.html">
-            Home
+            <strong>LitterLog<i class="far fa-trash-alt"></i></strong>
           </a>
 
-          <a class="navbar-item" href="heatmap.html">
-            Heatmap
+          <a
+            role="button"
+            class="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
           </a>
+        </div>
+        <div class="navbar-start"></div>
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="index.html">
+              Home
+            </a>
 
-          <a class="navbar-item" href="form.html">
-            Form
-          </a>
+            <a class="navbar-item" href="heatmap.html">
+              Heatmap
+            </a>
+
+            <a class="navbar-item" href="form.html">
+              Form
+            </a>
+          </div>
         </div>
       </div>
     </nav>
@@ -51,6 +53,7 @@
       <h1 class="title">Track a Litter Pickup</h1>
       
       <div class="wrapper">
+        <h2 class="subtitle">Personal Information</h2>
 
         <div class="field is-horizontal">
           <div class="field-label is-normal">
@@ -110,6 +113,18 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="wrapper">
+        <h2 class="subtitle">Location</h2>
+      </div>
+
+      <div class="wrapper">
+        <h2 class="subtitle">Date/Time</h2>
+      </div>
+
+      <div class="wrapper">
+        <h2 class="subtitle">Cleanup Information</h2>
       </div>
 
     <script src="./js/menu.js"></script>
