@@ -6569,11 +6569,6 @@ label.panel-block {
   -webkit-transition-duration: 0.075s;
   transition-duration: 0.075s; }
 
-.navbar-menu .is-active {
-  clear: both;
-  max-height: 0;
-  transition: max-height .2s ease-out; }
-
 .title {
   margin-bottom: 0; }
 
