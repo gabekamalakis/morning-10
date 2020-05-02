@@ -14,7 +14,10 @@
   },
   "homepage": "https://github.com/gabekamalakis/morning-10#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "heatmap.js": "^2.0.5",
+    "leaflet-heatmap": "^1.0.0",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
