@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+// Customization
+
+// You can easily customize Bulma with your own variables.
+// Just uncomment the following block to see the result.
+
+
+// // 1. Import the initial variables
+// @import "../../node_modules/bulma/sass/utilities/initial-variables";
+
+// // 2. Set your own initial variables
+// // Update the blue shade, used for links
+// $blue: #06bcef;
+// // Add pink and its invert
+// $pink: #ff8080;
+// $pink-invert: #fff;
+// // Update the sans-serif font family
+// $family-sans-serif: "Helvetica", "Arial", sans-serif;
+
+// // 3. Set the derived variables
+// // Use the new pink as the prpinkimary color
+// $primary: $pink;
+// $primary-invert: $pink-invert;
+
+// // 4. Import the rest of Bulma
+// @import "../../node_modules/bulma/bulma";
+
+// // 5. Set your own rules?
+// html {
+//     background-color: $blue;
+// }
+
+// Set your brand colors
+$purple: #8A4D76;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+
+// Update Bulma's global variables
+$family-sans-serif: "Helvetica", "Arial", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: $beige-lighter;
+$control-border-width: 1px;
+// $input-border-color: transparent;
+$input-shadow: none;
+$navbar-breakpoint: 768px;
+
+@import "../../node_modules/bulma/bulma";
+
+.navbar {
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 32px;
+}
+
+.navbar .container {
+    max-width: 1344px;
+}
+
+.navbar-item {
+    font-size: 1.2rem;
+    -webkit-transition-duration: 0.01s;
+    transition-duration: 0.01s;
+}
+
+.navbar-item:hover {
+    -webkit-transition-duration: 0.075s;
+    transition-duration: 0.075s;
+}
+
+.title {
+    margin-bottom: 0;
+}
+
+.wrapper {
+    background-color: #eee;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+    margin-top: 24px;
+    padding: 32px;
+    border-radius: 2px;
+}
+
+// Animation from https://github.com/jgthms/bulma/issues/1790#issuecomment-558588111
+@include until($tablet) {
+    .navbar-menu {
+      display: block;
+      opacity: 0;
+  
+      position: absolute;
+      left: 0;
+      right: 0;
+  
+    transform: translateY(-15%);
+      transition: all .15s ease-in-out;
+      pointer-events: none;
+    }
+  
+    .navbar-menu.is-active {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+  }

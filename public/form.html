@@ -1,27 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Litter Logger</title>
-</head>
-<body>
-	<div class="nav">
-		<ul>
-			<li><a href="form.html">Form</a></li>
-			<li><a href="heatmap.html">Heatmap</a></li>
-			<li><a href="index.html">Home</a></li>
-		</ul>
-	</div>
-	<div class="wrapper">
-		<div class="container">
-			<div class="personalinfo">
-				<h2 class="title">
-					<form action="" class="name"></form>
-				</h2>
-			</div>
-		</div>
-	</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <title>Litter Logger</title>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="index.html">
+            <strong>LitterLog<i class="far fa-trash-alt"></i></strong>
+          </a>
 
-</body>
+          <a
+            role="button"
+            class="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="navbar-start"></div>
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="index.html">
+              Home
+            </a>
+
+            <a class="navbar-item" href="heatmap.html">
+              Heatmap
+            </a>
+
+            <a class="navbar-item" href="form.html">
+              Form
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="title">Track a Litter Pickup</h1>
+
+      <div class="wrapper">
+        <h2 class="subtitle">Personal Information</h2>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Name</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded">
+                <input class="input" type="text" placeholder="Firstname Lastname">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">Email</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded">
+                <input class="input" type="text" placeholder="email@address.com">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">Phone number</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded">
+                <input class="input" type="text" placeholder="(XXX)-XXX-XXXX">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">Part of an organization?</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="member">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input type="radio" name="member">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <h2 class="subtitle">Location</h2>
+      </div>
+
+      <div class="wrapper">
+        <h2 class="subtitle">Date/Time</h2>
+      </div>
+
+      <div class="wrapper">
+        <h2 class="subtitle">Cleanup Information</h2>
+      </div>
+
+    <script src="./js/menu.js"></script>
+  </body>
 </html>

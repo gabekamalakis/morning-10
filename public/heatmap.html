@@ -1,18 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Heat Map</title>
-</head>
-<body>
-	<div class="nav">
-		<ul>
-			<li><a href="form.html">Form</a></li>
-			<li><a href="heatmap.html">Heatmap</a></li>
-			<li><a href="index.html">Home</a></li>
-		</ul>
-	</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <script
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""
+    ></script>
+    <script src="./js/heatmap.js"></script>
+    <script src="./js/leaflet-heatmap.js"></script>
+    <style>
+      #mapid {
+        /* Setting map style here since this is the only page that needs it*/
+        height: 600px;
+        width: 100%;
+        z-index: 10;
+      }
 
-</body>
+    </style>
+    <title>Heat Map</title>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="index.html">
+            <strong>LitterLog<i class="far fa-trash-alt"></i></strong>
+          </a>
+
+          <a
+            role="button"
+            class="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="navbar-start"></div>
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="index.html">
+              Home
+            </a>
+
+            <a class="navbar-item" href="heatmap.html">
+              Heatmap
+            </a>
+
+            <a class="navbar-item" href="form.html">
+              Form
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="title">Heatmap</h1>
+      <div class="wrapper">
+        <div id="mapid"></div>
+      </div>
+    </div>
+    <script src="./js/menu.js"></script>
+    <!-- <script>
+            // Modified from heatmap example at https://www.patrick-wied.at/static/heatmapjs/example-heatmap-leaflet.html
+            window.onload = function() {
+        const baseLayer = L.tileLayer(
+          "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+          {
+            attribution:
+              'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://data.princegeorgescountymd.gov/">PG County</a>',
+            maxZoom: 18,
+            id: "mapbox/streets-v11",
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken:
+              "pk.eyJ1IjoicGFnYXJjaWEiLCJhIjoiY2s4ZXNhdDZvMDAwODNtcGhmZWdreHh0eCJ9.LAsRVy-mflZw0l16nB4rzw",
+          }
+        );
+
+        const cfg = {
+          radius: 12,
+          maxOpacity: .8,
+          latField: "lat",
+          lngField: "lng",
+          valueField: "total_bags",
+        };
+
+        const heatmapLayer = new HeatmapOverlay(cfg);
+
+        fetch(
+          "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json"
+        )
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            console.log("LitterTrak data", data);
+            const dataPoints = [];
+            for (key in data) {
+              dataPoints.push({
+                lat: data[key].geocoded_column.longitude,
+                lng: data[key].geocoded_column.latitude,
+                total_bags: data[key].total_bags_litter,
+              });
+            }
+            console.log("Filter to lat, long, and total bags", dataPoints);
+
+            const heatmapData = {
+              max: 78,
+              data: dataPoints,
+            };
+
+            console.log("Data passed to map",heatmapData);
+            heatmapLayer.setData(heatmapData);
+          });
+
+        const map = new L.Map("mapid", {
+          center: new L.LatLng(38.8334467, -76.8496937),
+          zoom: 10,
+          layers: [baseLayer, heatmapLayer],
+        });
+      };
+    </script> -->
+    <script src="./js/map.js"></script>
+  </body>
 </html>
