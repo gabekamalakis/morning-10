@@ -15,7 +15,11 @@
     "leaflet-heatmap": "^1.0.0",
     "node-fetch": "^2.6.0",
     "sqlite3": "^4.2.0",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "nodemon": "^2.0.3",
+    "bulma": "^0.8.2",
+    "mocha": "^7.1.2",
+    "node-sass": "^4.13.1"
   },
   "bugs": {
     "url": "https://github.com/gabekamalakis/morning-10/issues"
@@ -27,10 +31,6 @@
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.5",
     "autoprefixer": "^9.7.6",
-    "bulma": "^0.8.2",
-    "mocha": "^7.1.2",
-    "node-sass": "^4.13.1",
-    "nodemon": "^2.0.3",
     "postcss-cli": "^7.1.0"
   },
   "scripts": {
