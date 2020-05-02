@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 application.use(express.static("public"));
 
 application.listen(port, () =>
-  console.log(`LitterLogger listening on port ${port}!`)
+  console.log(`LitterLogger server listening on port ${port}!`)
 );
 
 // JSON data Features
