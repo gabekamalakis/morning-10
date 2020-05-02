@@ -29,7 +29,7 @@ function processDataForFrontEnd(req, res) {
   fetch(baseURL)
     .then((response) => response.json())
     .then((data) => {
-      console.log("LitterTrak data", data);
+      //console.log("LitterTrak data", data);
       const dataPoints = [];
       data.forEach((r) => {
         dataPoints.push({
@@ -38,7 +38,7 @@ function processDataForFrontEnd(req, res) {
           total_bags: r.total_bags_litter,
         })
       });
-      console.log("Filter to lat, long, and total bags", dataPoints);
+      //console.log("Filter to lat, long, and total bags", dataPoints);
       res.send({ dataPoints }); // Return data to front end
     })
     .catch((err) => {
