@@ -62,7 +62,9 @@ $navbar-breakpoint: 768px;
 }
 
 .navbar .container {
-    max-width: 1344px;
+  @include from($navbar-breakpoint) {
+    max-width: 80%;
+  }
 }
 
 .navbar-item {
