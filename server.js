@@ -44,11 +44,11 @@ function processDataForFrontEnd(req, res) {
       //console.log("LitterTrak data", data);
       const dataPoints = [];
 
-      data.forEach((r) => {
+      data.forEach((location) => {
         dataPoints.push({
-          lat: r.geocoded_column.longitude,
-          lng: r.geocoded_column.latitude,
-          total_bags: r.total_bags_litter,
+          lat: location.geocoded_column.longitude,
+          lng: location.geocoded_column.latitude,
+          total_bags: location.total_bags_litter,
         })
       });
       //console.log("Filter to lat, long, and total bags", dataPoints);
