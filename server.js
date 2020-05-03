@@ -21,6 +21,9 @@ const port = process.env.PORT || 3000;
 // Wiring up server to use Public folder
 app.use(express.static("public"));
 
+// Load node_modules from here https://stackoverflow.com/a/27464258
+app.use('/scripts', express.static(__dirname + '/node_modules/'));
+
 app.listen(port, () =>
   console.log(`LitterLogger server listening on port ${port}!`)
 );
