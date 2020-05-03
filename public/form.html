@@ -10,6 +10,21 @@
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
+    <style>
+      /* Calendar styles */
+      .datetimepicker {
+        box-shadow: none;
+        border-radius: 4px;
+      }
+
+      .datetimepicker-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+      .datetimepicker .timepicker .timepicker-time-divider, .timepicker-input-number {
+        color: #363636;
+      }
+    </style>
     <title>Litter Logger - Track Litter</title>
   </head>
   <body>
@@ -123,7 +138,7 @@
 
       <div class="wrapper">
         <h2 class="subtitle">Date/Time</h2>
-        <input type="datetime" data-display-mode="inline" data-close-on-select="false">
+        <input type="datetime" data-display-mode="inline">
       </div>
 
       <div class="wrapper">

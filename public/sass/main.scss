@@ -90,11 +90,6 @@ $navbar-breakpoint: 768px;
     border-radius: 2px;
 }
 
-.datetimepicker-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
 // Animation from https://github.com/jgthms/bulma/issues/1790#issuecomment-558588111
 @include until($tablet) {
     .navbar-menu {

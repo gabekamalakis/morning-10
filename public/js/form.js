@@ -1,6 +1,8 @@
 // From https://demo.creativebulma.net/components/calendar/v6//#integration
 // Initialize all input of date type.
-const options = {};
+const options = {
+    color: "dark" // colors here: https://bulma.io/documentation/elements/button/#colors
+};
 const calendars = bulmaCalendar.attach('[type="datetime"]', options);
 
 // Loop on each calendar initialized
