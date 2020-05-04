@@ -88,6 +88,12 @@ $navbar-breakpoint: 768px;
   }
 }
 
+.subtitle:not(:last-child) {
+  @include until($navbar-breakpoint) {
+    margin-bottom: 12px;
+  }
+}
+
 .main.container {
   @include until($desktop) {
     // 24px side padding when not full width

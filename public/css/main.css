@@ -6577,6 +6577,10 @@ label.panel-block {
   .title:not(:last-child) {
     margin-bottom: 16px; } }
 
+@media screen and (max-width: 767px) {
+  .subtitle:not(:last-child) {
+    margin-bottom: 12px; } }
+
 @media screen and (max-width: 1023px) {
   .main.container {
     padding: 0px 24px 0px 24px; } }
