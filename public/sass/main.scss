@@ -59,6 +59,10 @@ $navbar-breakpoint: 768px;
 .navbar {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
     margin-bottom: 32px;
+    @include until($navbar-breakpoint) {
+      // mobile margin
+      margin-bottom: 16px;
+    }
 }
 
 .navbar .container {
@@ -78,8 +82,10 @@ $navbar-breakpoint: 768px;
     transition-duration: 0.075s;
 }
 
-.title {
-    margin-bottom: 0;
+.title:not(:last-child) {
+  @include until($navbar-breakpoint) {
+    margin-bottom: 16px;
+  }
 }
 
 .main.container {
@@ -96,10 +102,14 @@ $navbar-breakpoint: 768px;
 
 .wrapper {
     background-color: #eee;
+    border-radius: 2px;
     box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
     margin-bottom: 24px;
     padding: 32px;
-    border-radius: 2px;
+    @include until($navbar-breakpoint) {
+      // mobile padding
+      padding: 12px;
+    }
 }
 
 // Animation from https://github.com/jgthms/bulma/issues/1790#issuecomment-558588111
