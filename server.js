@@ -33,29 +33,25 @@ app.get("/api", (req, res) => {
   processDataForFrontEnd(req, res);
 });
 
-function processDataForFrontEnd(req, res) {
-  const baseURL =
-    "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json";
+async function processDataForFrontEnd(req, res) {
+	const baseURL = "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json";
 
-  //Fetch API Call
-  fetch(baseURL)
-    .then((response) => response.json())
-    .then((data) => {
-      //console.log("LitterTrak data", data);
-      const dataPoints = [];
+	const response = await fetch(baseURL);
+	try {
+		const data = await response.json()
 
-      data.forEach((location) => {
-        dataPoints.push({
-          lat: location.geocoded_column.longitude,
-          lng: location.geocoded_column.latitude,
-          total_bags: location.total_bags_litter,
-        })
-      });
-      //console.log("Filter to lat, long, and total bags", dataPoints);
-      res.send({ dataPoints }); // Return data to front end
-    })
-    .catch((err) => {
-      console.log(err);
-      res.redirect("/error");
-    });
-}
+		const dataPoints = [];
+		data.forEach((location) => {
+			dataPoints.push({
+        	  		lat: location.geocoded_column.longitude,
+        	  		lng: location.geocoded_column.latitude,
+        	  		total_bags: location.total_bags_litter,
+			})
+        	});
+		res.send({ dataPoints })
+		}
+	catch(e) {
+		console.log(err);
+		res.redirect("/error")
+	};
+};
