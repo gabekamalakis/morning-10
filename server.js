@@ -13,12 +13,9 @@ const dbSettings = {
 };
 
 
-
+// Express settings
 const app = express();
-// Port selection
 const port = process.env.PORT || 3000;
-
-// Wiring up server to use Public folder
 app.use(express.static("public"));
 
 // Load node_modules from here https://stackoverflow.com/a/27464258
@@ -33,6 +30,7 @@ app.get("/api", (req, res) => {
   processDataForFrontEnd(req, res);
 });
 
+// Data Fetching function (Async-Await for much better readability and less headbanging)
 async function processDataForFrontEnd(req, res) {
 	const baseURL = "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json";
 
@@ -55,3 +53,7 @@ async function processDataForFrontEnd(req, res) {
 		res.redirect("/error")
 	};
 };
+
+// Database loading function
+
+async function databaseLoader(url) {}
