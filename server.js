@@ -69,12 +69,12 @@ function databaseLoader() {
 		try {
 			const db = await open(dbSettings);
 			createTables(dbSettings);
-		// const testQuery = await db.all("DESCRIBE user");
-			console.log("Test");
+			const testQuery = await db.all('PRAGMA table_info(user);');
+			console.log("Test", testQuery);
 		}
 		catch(e) {
 			console.log("You dun goofed");
-			console.log(err);
+			// console.log(err);
 		};
 
 	})();
