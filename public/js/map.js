@@ -15,7 +15,7 @@ fetch("/api")
         attribution:
           'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://data.princegeorgescountymd.gov/">PG County</a>',
         maxZoom: 18,
-        id: "mapbox/streets-v11",
+        id: "mapbox/light-v10",
         tileSize: 512,
         zoomOffset: -1,
         accessToken:
@@ -31,7 +31,15 @@ fetch("/api")
       valueField: "total_bags",
     };
 
-    const boundaryLayer = L.geoJson(pgBoundary);
+    const style = {
+      fillColor: 'purple',
+      weight: 2,
+      opacity: 0.3,
+      color: 'purple',
+      fillOpacity: 0.05
+    };
+
+    const boundaryLayer = L.geoJson(pgBoundary, {style: style});
 
     const heatmapLayer = new HeatmapOverlay(cfg);
 
