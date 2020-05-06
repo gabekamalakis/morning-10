@@ -31,12 +31,14 @@ fetch("/api")
       valueField: "total_bags",
     };
 
+    const boundaryLayer = L.geoJson(pgBoundary);
+
     const heatmapLayer = new HeatmapOverlay(cfg);
 
     const map = new L.Map("mapid", {
       center: new L.LatLng(38.8334467, -76.8496937),
       zoom: 10,
-      layers: [baseLayer, heatmapLayer],
+      layers: [baseLayer, boundaryLayer, heatmapLayer],
     });
 
     console.log("Data passed to map", heatmapData);
