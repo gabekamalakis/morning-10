@@ -66,10 +66,16 @@ async function processDataForFrontEnd(req, res) {
 
 function databaseLoader() {
 	(async () => {
-		const db = await open(dbSettings);
-		createTables(dbSettings);
-		const testQuery = await db.all("DESCRIBE user");
-		console.log("Test", testQuery);
+		try {
+			const db = await open(dbSettings);
+			createTables(dbSettings);
+		// const testQuery = await db.all("DESCRIBE user");
+			console.log("Test");
+		}
+		catch(e) {
+			console.log("You dun goofed");
+			console.log(err);
+		};
 
 	})();
 }

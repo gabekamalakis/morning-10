@@ -8,9 +8,10 @@ async function createTables(dbSettings) {
 	await db.exec('CREATE TABLE IF NOT EXISTS user (name, email, phoneNumber, trashType, weight, numBags, locations)');
 
 	// This is a check to see if it's working
-	const result  = await db.each('SHOW TABLES;', (err) => {
-		console.log('createTables', err);
-		});
+	// const result  = await db.each('SHOW TABLES;', (err) => {
+	// 	console.log('createTables', err);
+	// 	});
+	const result = "Success";
 
 	return result;
 }
