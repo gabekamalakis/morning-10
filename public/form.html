@@ -20,13 +20,13 @@
     />
     <style>
       /* Map styles */
-      #map {
+      /* #map {
         position: relative;
         top: 0;
         bottom: 0;
         height: 450px;
         width: 100%;
-      }
+      } */
 
       /* Calendar styles */
       .datetimepicker {
@@ -167,7 +167,50 @@
 
         <div class="wrapper">
           <h2 class="subtitle">Location</h2>
-          <div id="map"></div>
+
+          <div class="field is-horizontal">
+            <div class="field-label">
+              <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <button class="button is-primary">
+                    <span class="icon">
+                      <i class="far fa-compass"></i>
+                    </span>
+                    <span>Use Current Location</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Latitude</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input class="input" type="text" placeholder="38.988133" />
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Longitude</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input class="input" type="text" placeholder="-76.941566" />
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="wrapper">
