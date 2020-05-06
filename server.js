@@ -4,12 +4,15 @@ import express from "express";
 //const fetch = require("node-fetch");
 import fetch from "node-fetch";
 
+import createTables from "./server/sqlCommands";
+
 // Importing SQLite
 import sqlite3 from "sqlite3";
+import { open } from "sqlite";
 
 const dbSettings = {
-	filename: './tmp/litterdata.db',
-	driver: sqlite3.Database
+	filename: './tmp/database.db',
+	driver: sqlite3.Database,
 };
 
 
@@ -52,6 +55,11 @@ async function processDataForFrontEnd(req, res) {
 		console.log(err);
 		res.redirect("/error")
 	};
+		console.log("Begin Database Block");
+		const test = await open(dbSettings);
+		// const database = await createTables(dbSettings);
+		// const testQuery = await test.all("DESCRIBE user");
+		// console.log("Test Query: ", testQuery);
 };
 
 // Database loading function
