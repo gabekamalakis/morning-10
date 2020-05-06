@@ -6556,13 +6556,9 @@ label.panel-block {
 .navbar {
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 32px; }
-  @media screen and (max-width: 767px) {
-    .navbar {
-      margin-bottom: 16px; } }
 
-@media screen and (min-width: 768px) {
-  .navbar .container {
-    max-width: 80%; } }
+.navbar .container {
+  max-width: 1344px; }
 
 .navbar-item {
   font-size: 1.2rem;
@@ -6573,31 +6569,15 @@ label.panel-block {
   -webkit-transition-duration: 0.075s;
   transition-duration: 0.075s; }
 
-@media screen and (max-width: 767px) {
-  .title:not(:last-child) {
-    margin-bottom: 16px; } }
-
-@media screen and (max-width: 767px) {
-  .subtitle:not(:last-child) {
-    margin-bottom: 12px; } }
-
-@media screen and (max-width: 1023px) {
-  .main.container {
-    padding: 0px 24px 0px 24px; } }
-
-@media screen and (max-width: 767px) {
-  .main.container {
-    padding: 0px 6px 0px 6px; } }
+.title {
+  margin-bottom: 0; }
 
 .wrapper {
   background-color: #eee;
-  border-radius: 2px;
   box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
-  margin-bottom: 24px;
-  padding: 32px; }
-  @media screen and (max-width: 767px) {
-    .wrapper {
-      padding: 12px; } }
+  margin-top: 24px;
+  padding: 32px;
+  border-radius: 2px; }
 
 @media screen and (max-width: 768px) {
   .navbar-menu {

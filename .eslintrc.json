@@ -6,6 +6,9 @@
     "plugins": [
         "html"
     ],
+    "extends": [
+        "airbnb-base"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"

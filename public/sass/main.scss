@@ -59,16 +59,10 @@ $navbar-breakpoint: 768px;
 .navbar {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
     margin-bottom: 32px;
-    @include until($navbar-breakpoint) {
-      // mobile margin
-      margin-bottom: 16px;
-    }
 }
 
 .navbar .container {
-  @include from($navbar-breakpoint) {
-    max-width: 80%;
-  }
+    max-width: 1344px;
 }
 
 .navbar-item {
@@ -82,40 +76,16 @@ $navbar-breakpoint: 768px;
     transition-duration: 0.075s;
 }
 
-.title:not(:last-child) {
-  @include until($navbar-breakpoint) {
-    margin-bottom: 16px;
-  }
-}
-
-.subtitle:not(:last-child) {
-  @include until($navbar-breakpoint) {
-    margin-bottom: 12px;
-  }
-}
-
-.main.container {
-  @include until($desktop) {
-    // 24px side padding when not full width
-    padding: 0px 24px 0px 24px;
-  }
-
-  @include until($navbar-breakpoint) {
-    // mobile padding
-    padding: 0px 6px 0px 6px;
-  }
+.title {
+    margin-bottom: 0;
 }
 
 .wrapper {
     background-color: #eee;
-    border-radius: 2px;
     box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
-    margin-bottom: 24px;
+    margin-top: 24px;
     padding: 32px;
-    @include until($navbar-breakpoint) {
-      // mobile padding
-      padding: 12px;
-    }
+    border-radius: 2px;
 }
 
 // Animation from https://github.com/jgthms/bulma/issues/1790#issuecomment-558588111
