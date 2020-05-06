@@ -9,84 +9,76 @@
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
     <title>Litter Logger</title>
-    <style>
-      body {
-        /* Fix footer to bottom https://github.com/jgthms/bulma/issues/47#issuecomment-285078785
-        Setting display to flex on the other pages breaks the container div */
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-      }
-    </style>
   </head>
   <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="index.html">
-            <strong>LitterLog<i class="far fa-trash-alt"></i></strong>
-          </a>
-
-          <a
-            role="button"
-            class="navbar-burger burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarMain"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div class="navbar-start"></div>
-        <div id="navbarMain" class="navbar-menu">
-          <div class="navbar-end">
+    <div class="flextape">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="container">
+          <div class="navbar-brand">
             <a class="navbar-item" href="index.html">
-              Home
+              <strong>LitterLog<i class="far fa-trash-alt"></i></strong>
             </a>
 
-            <a class="navbar-item" href="heatmap.html">
-              Heatmap
-            </a>
-
-            <a class="navbar-item" href="form.html">
-              Form
+            <a
+              role="button"
+              class="navbar-burger burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarMain"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
             </a>
           </div>
+          <div class="navbar-start"></div>
+          <div id="navbarMain" class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item" href="index.html">
+                Home
+              </a>
+
+              <a class="navbar-item" href="heatmap.html">
+                Heatmap
+              </a>
+
+              <a class="navbar-item" href="form.html">
+                Form
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-    <div class="main container">
-      <h1 class="title">Welcome to LitterLog!</h1>
-      <div class="wrapper">
-        <p>
-          A of University of Maryland students are exploring a new way to make
-          litter tracking more efficient and visualize areas around Pringe
-          George's County litter is often found.
-        </p>
-        <br />
+      <div class="main container">
+        <h1 class="title">Welcome to LitterLog!</h1>
+        <div class="wrapper">
+          <p>
+            A of University of Maryland students are exploring a new way to make
+            litter tracking more efficient and visualize areas around Pringe
+            George's County litter is often found.
+          </p>
+          <br />
 
-        <p>
-          LitterLog is a web and smartphone application used to track trash
-          collection during clean-up events in Prince George’s County.
-        </p>
-        <br />
+          <p>
+            LitterLog is a web and smartphone application used to track trash
+            collection during clean-up events in Prince George’s County.
+          </p>
+          <br />
 
-        <p>
-          Information submitted through LitterLog including bags of litter
-          removed, items collected and litter pick-up locations will assist the
-          Department of Energy meet their trash reduction rate of 170,628 pounds
-          per year within the Anacostia River Watershed. Data provided will also
-          help the DoE develop real-time maps cataloging litter collected
-          throughout PG County.
-        </p>
-      </div>
+          <p>
+            Information submitted through LitterLog including bags of litter
+            removed, items collected and litter pick-up locations will assist
+            the Department of Energy meet their trash reduction rate of 170,628
+            pounds per year within the Anacostia River Watershed. Data provided
+            will also help the DoE develop real-time maps cataloging litter
+            collected throughout PG County.
+          </p>
+        </div>
 
-      <div class="wrapper"></div>
+        <div class="wrapper"></div>
 
-      <!-- <div class="card">
+        <!-- <div class="card">
       <div class="card-image">
         <figure class="image is-4by3">
           <img src="./imgs/pgtrash.jpg" alt="photo of median with litter and
@@ -99,6 +91,8 @@
         </div>
       </div>
     </div> -->
+    
+      </div>
     </div>
 
     <footer class="footer">
