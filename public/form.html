@@ -1,251 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./css/main.css" />
-  <link href="/scripts/bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
-  <script src="/scripts/bulma-calendar/dist/js/bulma-calendar.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
-  <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
-  <style>
-    /* Map styles */
-    #map {
-      position: relative;
-      top: 0;
-      bottom: 0;
-      height: 450px;
-      width: 100%;
-    }
-
-    /* Calendar styles */
-    .datetimepicker {
-      box-shadow: none;
-      border-radius: 4px;
-    }
-
-    .datetimepicker-wrapper {
-      display: flex;
-      justify-content: center;
-    }
-
-    .datetimepicker .timepicker .timepicker-time-divider,
-    .timepicker-input-number {
-      color: #363636;
-    }
-  </style>
-  <title>Litter Logger - Track Litter</title>
-</head>
-
-<body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="container">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="index.html">
-          <strong>LitterLog<i class="far fa-trash-alt"></i></strong>
-        </a>
-
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div class="navbar-start"></div>
-      <div id="navbarMain" class="navbar-menu">
-        <div class="navbar-end">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <title>Litter Logger</title>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
           <a class="navbar-item" href="index.html">
-            Home
+            <strong>LitterLog<i class="far fa-trash-alt"></i></strong>
           </a>
 
-          <a class="navbar-item" href="heatmap.html">
-            Heatmap
-          </a>
-
-          <a class="navbar-item" href="form.html">
-            Form
+          <a
+            role="button"
+            class="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
           </a>
         </div>
-      </div>
-    </div>
-  </nav>
+        <div class="navbar-start"></div>
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="index.html">
+              Home
+            </a>
 
-  <div class="main container">
-    <h1 class="title">Track a Litter Pickup</h1>
+            <a class="navbar-item" href="heatmap.html">
+              Heatmap
+            </a>
 
-    <div class="wrapper">
-      <h2 class="subtitle">Personal Information</h2>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Name</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <p class="control is-expanded">
-              <input class="input" type="text" placeholder="Firstname Lastname">
-            </p>
+            <a class="navbar-item" href="form.html">
+              Form
+            </a>
           </div>
         </div>
       </div>
+    </nav>
 
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Email</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <p class="control is-expanded">
-              <input class="input" type="email" placeholder="email@address.com">
-            </p>
+    <div class="container">
+      <h1 class="title">Track a Litter Pickup</h1>
+
+      <div class="wrapper">
+        <h2 class="subtitle">Personal Information</h2>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Name</label>
           </div>
-        </div>
-      </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Phone number</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <p class="control is-expanded">
-              <input class="input" type="tel" placeholder="(XXX)-XXX-XXXX">
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Part of an organization?</label>
-        </div>
-        <div class="field-body">
-          <div class="field is-narrow">
-            <div class="control">
-              <label class="radio">
-                <input type="radio" name="member">
-                Yes
-              </label>
-              <label class="radio">
-                <input type="radio" name="member">
-                No
-              </label>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded">
+                <input class="input" type="text" placeholder="Firstname Lastname">
+              </p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="wrapper">
-      <h2 class="subtitle">Location</h2>
-      <div id="map"></div>
-    </div>
-
-    <div class="wrapper">
-      <h2 class="subtitle">Date/Time</h2>
-      <input type="datetime" data-display-mode="inline">
-    </div>
-
-    <div class="wrapper">
-      <h2 class="subtitle">Cleanup Information</h2>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Cleanup Type</label>
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">Email</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded">
+                <input class="input" type="text" placeholder="email@address.com">
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <div class="select is-fullwidth">
-                <select>
-                  <option>Type 1</option>
-                  <option>Type 2</option>
-                  <option>Type 3</option>
-                </select>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">Phone number</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded">
+                <input class="input" type="text" placeholder="(XXX)-XXX-XXXX">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">Part of an organization?</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="member">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input type="radio" name="member">
+                  No
+                </label>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Litter Type</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <div class="select is-fullwidth">
-                <select>
-                  <option>Type 1</option>
-                  <option>Type 2</option>
-                  <option>Type 3</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="wrapper">
+        <h2 class="subtitle">Location</h2>
       </div>
 
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Litter Amount</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <p class="control is-expanded">
-              <input class="input" type="text" placeholder="Number of bags/lbs collected">
-            </p>
-          </div>
-          <div class="field is-narrow">
-            <div class="control">
-              <label class="radio">
-                <input type="radio" name="member">
-                bags
-              </label>
-              <label class="radio">
-                <input type="radio" name="member">
-                lbs
-              </label>
-            </div>
-          </div>
-        </div>
+      <div class="wrapper">
+        <h2 class="subtitle">Date/Time</h2>
       </div>
 
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Notes</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <textarea class="textarea" placeholder="Additional remarks"></textarea>
-            </div>
-          </div>
-        </div>
+      <div class="wrapper">
+        <h2 class="subtitle">Cleanup Information</h2>
       </div>
 
-      <div class="field is-horizontal">
-        <div class="field-label">
-          <!-- Left empty for spacing -->
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <button class="button is-primary">
-                Submit Form
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
     <script src="./js/menu.js"></script>
-    <script src="./js/form.js"></script>
-</body>
-
+  </body>
 </html>
