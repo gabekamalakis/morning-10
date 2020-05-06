@@ -4,12 +4,18 @@ import express from "express";
 //const fetch = require("node-fetch");
 import fetch from "node-fetch";
 
+import createTables from "./server/sqlCommands";
+
 // Importing SQLite
 import sqlite3 from "sqlite3";
+import { open } from "sqlite";
+
+// Error checking
+sqlite3.verbose();
 
 const dbSettings = {
-	filename: './tmp/litterdata.db',
-	driver: sqlite3.Database
+	filename: './tmp/database.db',
+	driver: sqlite3.Database,
 };
 
 
@@ -52,8 +58,24 @@ async function processDataForFrontEnd(req, res) {
 		console.log(err);
 		res.redirect("/error")
 	};
+
+	databaseLoader();
 };
 
 // Database loading function
 
-async function databaseLoader(url) {}
+function databaseLoader() {
+	(async () => {
+		try {
+			const db = await open(dbSettings);
+			createTables(dbSettings);
+			const testQuery = await db.all('PRAGMA table_info(user);');
+			console.log("Test", testQuery);
+		}
+		catch(e) {
+			console.log("You dun goofed");
+			// console.log(err);
+		};
+
+	})();
+}

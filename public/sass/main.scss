@@ -53,8 +53,19 @@ $control-border-width: 1px;
 // $input-border-color: transparent;
 $input-shadow: none;
 $navbar-breakpoint: 768px;
+$footer-padding: 1rem 1.5rem 1rem;
 
 @import "../../node_modules/bulma/bulma";
+body {
+  // Fix footer to bottom https://github.com/jgthms/bulma/issues/47#issuecomment-285078785
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.flextape {
+  flex: 1;
+}
 
 .navbar {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
@@ -116,6 +127,10 @@ $navbar-breakpoint: 768px;
       // mobile padding
       padding: 12px;
     }
+}
+
+.footer {
+  margin-top: 4rem;
 }
 
 // Animation from https://github.com/jgthms/bulma/issues/1790#issuecomment-558588111
