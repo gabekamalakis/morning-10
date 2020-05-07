@@ -4,7 +4,10 @@ import express from "express";
 //const fetch = require("node-fetch");
 import fetch from "node-fetch";
 
-import createTables from "./server/sqlCommands";
+// import createTables from "./server/sqlCommands";
+// import addPickup from "./server/sqlCommands";
+
+const { createTables, addPickup } = require("./server/sqlCommands");
 
 // Importing SQLite
 import sqlite3 from "sqlite3";
@@ -42,38 +45,36 @@ async function processDataForFrontEnd(req, res) {
 
 	const response = await fetch(baseURL);
 	try {
+
 		const data = await response.json()
+		await databaseLoader(data);
 
 		const dataPoints = [];
-		data.forEach((location) => {
+		await data.forEach((location) => {
 			dataPoints.push({
         	  		lat: location.geocoded_column.longitude,
         	  		lng: location.geocoded_column.latitude,
         	  		total_bags: location.total_bags_litter,
 			})
         	});
-		res.send({ dataPoints })
+		await res.send({ dataPoints })
 		}
 	catch(e) {
 		console.log(err);
 		res.redirect("/error")
 	};
-
-	databaseLoader();
 };
 
 // Database loading function
 
-function databaseLoader() {
+async function databaseLoader(data) {
 	(async () => {
 		try {
 			const db = await open(dbSettings);
-			createTables(dbSettings);
-			const testQuery = await db.all('PRAGMA table_info(user);');
-			console.log("Test", testQuery);
+			await createTables(dbSettings, data);
 		}
 		catch(e) {
-			console.log("You dun goofed");
+			console.log("Error Loading Database");
 			// console.log(err);
 		};
 
