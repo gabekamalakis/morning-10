@@ -64,22 +64,14 @@ app.get("/api", (req, res) => {
 
 // Data Fetching function (Async-Await for much better readability and less headbanging)
 async function processDataForFrontEnd(req, res) {
-	const baseURL = "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json";
+	// const baseURL = "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json";
 
-	const response = await fetch(baseURL);
+	// const response = await fetch(baseURL);
 	try {
 
-		const data = await response.json()
-		// await databaseLoader(data);
+		// const data = await response.json();
+		const dataPoints = await locationFetcher(dbSettings);
 
-		const dataPoints = [];
-		await data.forEach((location) => {
-			dataPoints.push({
-        	  		lat: location.geocoded_column.longitude,
-        	  		lng: location.geocoded_column.latitude,
-        	  		total_bags: location.total_bags_litter,
-			})
-        	});
 		await res.send({ dataPoints })
 		}
 	catch(e) {
@@ -102,4 +94,12 @@ async function databaseLoader(data) {
 		};
 
 	})();
-}
+};
+
+async function locationFetcher(Settings) {
+
+	const locs = []
+	const db = await open(Settings);
+	const query = await db.all("Select latitude, longitude, numBags from user");
+	return query;
+};

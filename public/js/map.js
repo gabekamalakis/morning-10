@@ -26,9 +26,9 @@ fetch("/api")
     const cfg = {
       radius: 12,
       maxOpacity: 0.8,
-      latField: "lat",
-      lngField: "lng",
-      valueField: "total_bags",
+      latField: "latitude",
+      lngField: "longitude",
+      valueField: "numBags",
     };
 
     const style = {

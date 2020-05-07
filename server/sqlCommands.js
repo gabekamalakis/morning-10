@@ -8,7 +8,9 @@ async function createTables(dbSettings, data) {
 
 		const db = await open(dbSettings);
 		// Clears out previous entries (only for database loads)
+		console.log('Dropping existing databases...');
 		await db.exec('DROP TABLE IF EXISTS user');
+		console.log('Database cleared.');
 		await db.exec('CREATE TABLE IF NOT EXISTS user (name, email, phoneNumber, organization, trashType, weight, numBags, longitude, latitude)');
 
 		// This is a check to see if it's working
@@ -35,7 +37,7 @@ async function createTables(dbSettings, data) {
 			const itemorganization = item.organization;
 			const itemtrashType = item.type_litter;
 			const itemweight = "null";
-			const itemnumBags = item.number_bags;
+			const itemnumBags = item.total_bags_litter;
 			const itemlongitude = item.geocoded_column.longitude;
 			const itemlatitude = item.geocoded_column.latitude;
 			db.exec(`INSERT INTO user (name, email, phoneNumber, organization, trashType, weight, numBags, longitude, latitude) VALUES ("${itemname}", "${itememail}", "${itemphoneNumber}", "${itemorganization}", "${itemtrashType}", "${itemweight}", "${itemnumBags}", "${itemlongitude}", "${itemlatitude}")`);
