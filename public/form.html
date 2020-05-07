@@ -25,6 +25,10 @@
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
     <style>
+      .organization-info {
+        display: none;
+      }
+
       /* Map styles */
       #mapid {
         height: 400px;
@@ -177,13 +181,65 @@
               <div class="field is-narrow">
                 <div class="control">
                   <label class="radio">
-                    <input type="radio" name="member" />
+                    <input id="yes" type="radio" name="member" />
                     Yes
                   </label>
                   <label class="radio">
-                    <input type="radio" name="member" />
+                    <input id="no" type="radio" name="member" />
                     No
                   </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="organization-info">
+            <br />
+            <h2 class="subtitle">Organization Information</h2>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Org. Name</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded">
+                    <input class="input" type="text" placeholder="Org Name" />
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Org. Number</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded">
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="(XXX)-XXX-XXXX"
+                    />
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Permit</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded">
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="(XXX)-XXX-XXXX"
+                    />
+                  </p>
                 </div>
               </div>
             </div>

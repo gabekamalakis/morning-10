@@ -1,3 +1,17 @@
+const yesOrg = document.querySelector("#yes");
+const noOrg = document.querySelector("#no");
+const orgInfo = document.querySelector(".organization-info");
+
+yesOrg.addEventListener("click", (e) => {
+  orgInfo.style.display = "block";
+});
+
+noOrg.addEventListener("click", (e) => {
+  orgInfo.style.display = "none";
+});
+
+
+
 const myMap = document.querySelector("#mapid");
 const myBtn = document.querySelector("#getLocation");
 
