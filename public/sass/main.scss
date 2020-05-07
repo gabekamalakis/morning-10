@@ -1,10 +1,9 @@
 @charset "utf-8";
 
-// Customization
+// Customization https://github.com/jgthms/bulma-start/blob/master/_sass/main.scss
 
 // You can easily customize Bulma with your own variables.
 // Just uncomment the following block to see the result.
-
 
 // // 1. Import the initial variables
 // @import "../../node_modules/bulma/sass/utilities/initial-variables";
@@ -31,81 +30,144 @@
 //     background-color: $blue;
 // }
 
+// Import Stevie Sans Adobe font
+@import url("https://use.typekit.net/nae0otx.css");
+
+// Variables from https://bulma.io/documentation/customize/with-node-sass/#6-add-your-own-bulma-styles
 // Set your brand colors
-$purple: #8A4D76;
-$pink: #FA7C91;
+$purple: #8a4d76;
+$pink: #fa7c91;
 $brown: #757763;
-$beige-light: #D0D1CD;
-$beige-lighter: #EFF0EB;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
+//New color scheme
+$green: #52c236;
+$light-green: #c1ffd1;
+$lightlight: #e8faa7;
+$mega-light: #e9f5dc;
+$white: #ffffff;
+$blue-purple: #7826fe;
+$lavender: #f0ddff;
 
 // Update Bulma's global variables
-$family-sans-serif: "Helvetica", "Arial", sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $purple;
-$link: $pink;
+$family-sans-serif: stevie-sans, "Helvetica", "Arial", sans-serif;
+$grey-dark: #000;
+$grey-light: $lavender;
+$primary: $blue-purple;
+$link: $blue-purple;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
 // Update some of Bulma's component variables
-$body-background-color: $beige-lighter;
+$body-background-color: $white;
 $control-border-width: 1px;
 // $input-border-color: transparent;
 $input-shadow: none;
+$title-family: stevie-sans, "Helvetica", "Arial", sans-serif;
+$title-weight: 700;
 $navbar-breakpoint: 768px;
+$navbar-item-hover-background-color: #fcf7ff;
+$footer-padding: 1rem 1.5rem 1rem;
 
 @import "../../node_modules/bulma/bulma";
 
+body {
+  // Fix footer to bottom https://github.com/jgthms/bulma/issues/47#issuecomment-285078785
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.flextape {
+  flex: 1;
+}
+
 .navbar {
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-bottom: 32px;
+  background-color: $lavender;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 32px;
+  @include until($navbar-breakpoint) {
+    // mobile margin
+    margin-bottom: 16px;
+  }
 }
 
 .navbar .container {
-    max-width: 1344px;
+  @include from($navbar-breakpoint) {
+    max-width: 80%;
+  }
 }
 
 .navbar-item {
-    font-size: 1.2rem;
-    -webkit-transition-duration: 0.01s;
-    transition-duration: 0.01s;
+  font-size: 1.2rem;
+  -webkit-transition-duration: 0.01s;
+  transition-duration: 0.01s;
 }
 
 .navbar-item:hover {
-    -webkit-transition-duration: 0.075s;
-    transition-duration: 0.075s;
+  -webkit-transition-duration: 0.075s;
+  transition-duration: 0.075s;
 }
 
-.title {
-    margin-bottom: 0;
+.title:not(:last-child) {
+  @include until($navbar-breakpoint) {
+    margin-bottom: 16px;
+  }
+}
+
+.subtitle:not(:last-child) {
+  @include until($navbar-breakpoint) {
+    margin-bottom: 12px;
+  }
+}
+
+.main.container {
+  @include until($desktop) {
+    // 24px side padding when not full width
+    padding: 0px 24px 0px 24px;
+  }
+
+  @include until($navbar-breakpoint) {
+    // mobile padding
+    padding: 0px 6px 0px 6px;
+  }
 }
 
 .wrapper {
-    background-color: #eee;
-    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
-    margin-top: 24px;
-    padding: 32px;
-    border-radius: 2px;
+  background-color: $mega-light;
+  border-radius: 2px;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 24px;
+  padding: 32px;
+  @include until($navbar-breakpoint) {
+    // mobile padding
+    padding: 12px;
+  }
+}
+
+.footer {
+  background-color: $lavender;
+  margin-top: 4rem;
 }
 
 // Animation from https://github.com/jgthms/bulma/issues/1790#issuecomment-558588111
 @include until($tablet) {
-    .navbar-menu {
-      display: block;
-      opacity: 0;
-  
-      position: absolute;
-      left: 0;
-      right: 0;
-  
+  .navbar-menu {
+    display: block;
+    opacity: 0;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+
     transform: translateY(-15%);
-      transition: all .15s ease-in-out;
-      pointer-events: none;
-    }
-  
-    .navbar-menu.is-active {
-      opacity: 1;
-      transform: none;
-      pointer-events: auto;
-    }
+    transition: all 0.15s ease-in-out;
+    pointer-events: none;
   }
+
+  .navbar-menu.is-active {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}

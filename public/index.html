@@ -8,53 +8,224 @@
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
-    <title>Litter Logger</title>
+    <title>LitterLog</title>
+    <!-- favicon from favicon.io -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./imgs/ico/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./imgs/ico/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./imgs/ico/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./imgs/ico/site.webmanifest" />
   </head>
   <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="index.html">
-            <strong>LitterLog<i class="far fa-trash-alt"></i></strong>
-          </a>
-
-          <a
-            role="button"
-            class="navbar-burger burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasicExample"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div class="navbar-start"></div>
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-end">
+    <div class="flextape">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="container">
+          <div class="navbar-brand">
             <a class="navbar-item" href="index.html">
-              Home
+              <strong>LitterLog<i class="far fa-trash-alt"></i></strong>
             </a>
 
-            <a class="navbar-item" href="heatmap.html">
-              Heatmap
+            <a
+              role="button"
+              class="navbar-burger burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarMain"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
             </a>
+          </div>
+          <div class="navbar-start"></div>
+          <div id="navbarMain" class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item" href="index.html">
+                Home
+              </a>
 
-            <a class="navbar-item" href="form.html">
-              Form
-            </a>
+              <a class="navbar-item" href="heatmap.html">
+                Heatmap
+              </a>
+
+              <a class="navbar-item" href="form.html">
+                Form
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="main container">
+        <h1 class="title">Welcome to LitterLog!</h1>
+        <div class="wrapper">
+          <p>
+            A group of University of Maryland students are exploring a new way
+            to make litter tracking more efficient and visualize areas around
+            Pringe George's County where litter is often found.
+          </p>
+          <br />
+
+          <p>
+            LitterLog is a web and smartphone application used to track trash
+            collection during clean-up events in Prince George’s County.
+          </p>
+          <br />
+
+          <p>
+            Information submitted through LitterLog including bags of litter
+            removed, items collected and litter pick-up locations will assist
+            the Department of Energy meet their trash reduction rate of 170,628
+            pounds per year within the Anacostia River Watershed. Data provided
+            will also help the DoE develop real-time maps cataloging litter
+            collected throughout PG County.
+          </p>
+          <br />
+
+          <h2 class="title is-4">How to use LitterLog:</h2>
+          <div class="content">
+            <ol type="1">
+              <li>Check where in the community litter has been picked up</li>
+              <li>Fill out a form for any litter you pick up</li>
+              <li>Have fun!</li>
+            </ol>
+          </div>
+        </div>
+
+        <h1 class="title">What people are saying about LitterLog...</h1>
+        <div class="wrapper">
+          <div class="columns">
+            <!-- testimonial 1 -->
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img
+                      src="./imgs/pgtrash.jpg"
+                      alt="sign that says do not litter surrounded by litter"
+                    />
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-48x48">
+                        <img src="./imgs/pepe.jpg" alt="pepe the frog" />
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <p class="title is-4">Flavor Flav</p>
+                      <p class="subtitle is-6">@flavaflav</p>
+                    </div>
+                  </div>
+
+                  <div class="content">
+                    PEOPLE pICK UP YOUR
+                    TRASH! Gotta log this to <a>@litterlog</a> smh they will come
+                    for y'all.
+                    <a href="#">#litterlog</a> <a href="#">#theGOAT</a> 
+                    <a href="#">#humansaretheworst</a>
+                    <br />
+                    <time datetime="2016-1-1">04:20 PM - 3 May 2020</time>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- testimonial 2 -->
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img
+                      src="./imgs/fashion.jpg"
+                      alt="woman in dress holding trash bin"
+                    />
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-48x48">
+                        <img src="./imgs/karlie.jpg" alt="karlie kloss" />
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <p class="title is-4">Async Await</p>
+                      <p class="subtitle is-6">@const_over_var</p>
+                    </div>
+                  </div>
+
+                  <div class="content">
+                    thanks to <a>@litterlog</a> I can actually enjoy picking up
+                    trash! it's like pokémon go but for garbage!!!!
+                    <a href="#">#trashpickinginstyle</a>
+                    <a href="#">#litterlog</a>
+                    <br />
+                    <time datetime="2016-1-1">04:20 AM - 30 Apr 2020</time>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- testimonial 3 -->
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="./imgs/thegirls.jpg" alt="girls running" />
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-48x48">
+                        <img src="./imgs/niall.jpg" alt="niall horan" />
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <p class="title is-4">Prof AL</p>
+                      <p class="subtitle is-6">@covidniall</p>
+                    </div>
+                  </div>
+
+                  <div class="content">
+                    the gorlies and I out to LOG. SOME. TRASH. s/o to
+                    <a>@litterlog</a>. nature is healing thx to you. we are the
+                    trash. <a href="#">#plogging</a> <a href="#">#litterlog</a>
+                    <br />
+                    <time datetime="2016-1-1">04:20 PM - 4 May 2020</time>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </nav>
-
-    <div class="container">
-      <h1 class="title">About</h1>
-      <div class="wrapper">
-        [About goes here]
-      </div>
     </div>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>LitterLog</strong> is a site developed by University of
+          Maryland students: Gabe Kamalakis, Andrew Garcia, Sarwat Kazmi,
+          Brigidanna Crews, and Adam Fiergang.
+        </p>
+      </div>
+    </footer>
 
     <script src="./js/menu.js"></script>
   </body>
