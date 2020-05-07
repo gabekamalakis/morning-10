@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+@import url("https://use.typekit.net/nae0otx.css");
 /*! bulma.io v0.8.2 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
@@ -286,7 +286,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Helvetica", "Arial", sans-serif; }
+  font-family: stevie-sans, "Helvetica", "Arial", sans-serif; }
 
 code,
 pre {
@@ -733,13 +733,13 @@ a.has-text-danger:hover, a.has-text-danger:focus {
   font-weight: 700 !important; }
 
 .is-family-primary {
-  font-family: "Helvetica", "Arial", sans-serif !important; }
+  font-family: stevie-sans, "Helvetica", "Arial", sans-serif !important; }
 
 .is-family-secondary {
-  font-family: "Helvetica", "Arial", sans-serif !important; }
+  font-family: stevie-sans, "Helvetica", "Arial", sans-serif !important; }
 
 .is-family-sans-serif {
-  font-family: "Helvetica", "Arial", sans-serif !important; }
+  font-family: stevie-sans, "Helvetica", "Arial", sans-serif !important; }
 
 .is-family-monospace {
   font-family: monospace !important; }
@@ -2584,7 +2584,7 @@ a.tag:hover {
 
 .title {
   color: #363636;
-  font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+  font-family: stevie-sans, "Helvetica", "Arial", sans-serif;
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.125; }
@@ -6565,8 +6565,6 @@ body {
 
 .navbar {
   background-color: #f0ddff;
-  font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
-  font-weight: 500;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 32px; }
   @media screen and (max-width: 767px) {

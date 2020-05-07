@@ -30,7 +30,8 @@
 //     background-color: $blue;
 // }
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+// Import Stevie Sans Adobe font
+@import url("https://use.typekit.net/nae0otx.css");
 
 // Variables from https://bulma.io/documentation/customize/with-node-sass/#6-add-your-own-bulma-styles
 // Set your brand colors
@@ -49,7 +50,7 @@ $blue-purple: #7826fe;
 $lavender: #f0ddff;
 
 // Update Bulma's global variables
-$family-sans-serif: "Helvetica", "Arial", sans-serif;
+$family-sans-serif: stevie-sans, "Helvetica", "Arial", sans-serif;
 $grey-dark: #000;
 $grey-light: $lavender;
 $primary: $blue-purple;
@@ -62,7 +63,7 @@ $body-background-color: $white;
 $control-border-width: 1px;
 // $input-border-color: transparent;
 $input-shadow: none;
-$title-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+$title-family: stevie-sans, "Helvetica", "Arial", sans-serif;
 $title-weight: 700;
 $navbar-breakpoint: 768px;
 $navbar-item-hover-background-color: #fcf7ff;
@@ -83,8 +84,6 @@ body {
 
 .navbar {
   background-color: $lavender;
-  font-family: $title-family;
-  font-weight: 500;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 32px;
   @include until($navbar-breakpoint) {
