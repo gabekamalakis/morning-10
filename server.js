@@ -72,8 +72,6 @@ async function databaseLoader(data) {
 		try {
 			const db = await open(dbSettings);
 			await createTables(dbSettings, data);
-			const testquery = db.get('SELECT * FROM user');
-			console.log(testquery);
 		}
 		catch(e) {
 			console.log("Error Loading Database");
