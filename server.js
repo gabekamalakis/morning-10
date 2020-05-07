@@ -21,7 +21,30 @@ const dbSettings = {
 	driver: sqlite3.Database,
 };
 
+// SERVER STARTUP AND DATA LOADING
 
+async function initializeDatabase() {
+	const baseURL = "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json";
+	const response = await fetch(baseURL);
+	let dbstatus = "";
+
+	try {
+		const data = await response.json()
+		await databaseLoader(data);
+		dbstatus = "success";
+
+	} catch(e) {
+		console.log("Database Failure");
+		dbstatus = "failure";
+
+	}
+
+	return dbstatus
+}
+
+initializeDatabase();
+
+/// APPLICATION
 // Express settings
 const app = express();
 const port = process.env.PORT || 3000;
@@ -47,7 +70,7 @@ async function processDataForFrontEnd(req, res) {
 	try {
 
 		const data = await response.json()
-		await databaseLoader(data);
+		// await databaseLoader(data);
 
 		const dataPoints = [];
 		await data.forEach((location) => {
