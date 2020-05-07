@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-// Customization
+// Customization https://github.com/jgthms/bulma-start/blob/master/_sass/main.scss
 
 // You can easily customize Bulma with your own variables.
 // Just uncomment the following block to see the result.
@@ -31,6 +31,7 @@
 //     background-color: $blue;
 // }
 
+// Variables from https://bulma.io/documentation/customize/with-node-sass/#6-add-your-own-bulma-styles
 // Set your brand colors
 $purple: #8A4D76;
 $pink: #FA7C91;
@@ -65,6 +66,7 @@ $navbar-breakpoint: 768px;
 $footer-padding: 1rem 1.5rem 1rem;
 
 @import "../../node_modules/bulma/bulma";
+
 body {
   // Fix footer to bottom https://github.com/jgthms/bulma/issues/47#issuecomment-285078785
   display: flex;

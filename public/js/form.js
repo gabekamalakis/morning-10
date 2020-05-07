@@ -1,22 +1,22 @@
-// From https://docs.mapbox.com/mapbox-gl-js/example/locate-user/
-mapboxgl.accessToken =
-  "pk.eyJ1IjoicGFnYXJjaWEiLCJhIjoiY2s4ZXNhdDZvMDAwODNtcGhmZWdreHh0eCJ9.LAsRVy-mflZw0l16nB4rzw";
-const map = new mapboxgl.Map({
-  container: "map", // container id
-  style: "mapbox://styles/mapbox/streets-v11",
-  center: [-96, 37.8], // starting position
-  zoom: 3, // starting zoom
-});
+// // From https://docs.mapbox.com/mapbox-gl-js/example/locate-user/
+// mapboxgl.accessToken =
+//   "pk.eyJ1IjoicGFnYXJjaWEiLCJhIjoiY2s4ZXNhdDZvMDAwODNtcGhmZWdreHh0eCJ9.LAsRVy-mflZw0l16nB4rzw";
+// const map = new mapboxgl.Map({
+//   container: "map", // container id
+//   style: "mapbox://styles/mapbox/streets-v11",
+//   center: [-96, 37.8], // starting position
+//   zoom: 3, // starting zoom
+// });
 
-// Add geolocate control to the map.
-map.addControl(
-  new mapboxgl.GeolocateControl({
-    positionOptions: {
-      enableHighAccuracy: true,
-    },
-    trackUserLocation: true,
-  })
-);
+// // Add geolocate control to the map.
+// map.addControl(
+//   new mapboxgl.GeolocateControl({
+//     positionOptions: {
+//       enableHighAccuracy: true,
+//     },
+//     trackUserLocation: true,
+//   })
+// );
 
 // From https://demo.creativebulma.net/components/calendar/v6//#integration
 // Initialize all input of date type.
