@@ -13,13 +13,8 @@ async function createTables(dbSettings, data) {
 		console.log('Database cleared.');
 		await db.exec('CREATE TABLE IF NOT EXISTS user (name, email, phoneNumber, organization, trashType, weight, numBags, longitude, latitude)');
 
-		// This is a check to see if it's working
-		// const result  = await db.each('SHOW TABLES;', (err) => {
-		// 	console.log('createTables', err);
-		// 	});
 		result = "Success";
 		console.log("Database Initialized");
-		// return result;
 	}
 	catch(e) {
 		result = "Failure";
@@ -43,7 +38,7 @@ async function createTables(dbSettings, data) {
 			db.exec(`INSERT INTO user (name, email, phoneNumber, organization, trashType, weight, numBags, longitude, latitude) VALUES ("${itemname}", "${itememail}", "${itemphoneNumber}", "${itemorganization}", "${itemtrashType}", "${itemweight}", "${itemnumBags}", "${itemlongitude}", "${itemlatitude}")`);
 
         	});
-			console.log('Data inputed succesfully');
+			console.log('Data loaded succesfully');
 
 		}
 		catch(e) {
@@ -51,14 +46,15 @@ async function createTables(dbSettings, data) {
 		}
 	}
 
-	return null
+	return result;
 
 }
 
 async function addPickup(dbSettings, name, email, phoneNumber, trashType, weight, numBags, longitude, latitude) {
+	console.log("Inserting Form data...");
 	const db = open(dbSettings);
-	await db.exec(`INSERT INTO user (name, email, phoneNumber, trashType, weight, numBags, longitude, latitude) VALUES (${name}, ${email}, ${phoneNumber}, ${trashType}, ${weight}, ${numBags}, ${longitude}, ${latitude})`)
-
+	await db.exec(`INSERT INTO user (name, email, phoneNumber, trashType, weight, numBags, longitude, latitude) VALUES (${name}, ${email}, ${phoneNumber}, ${trashType}, ${weight}, ${numBags}, ${longitude}, ${latitude})`);
+	console.log("Success");
 }
 
 module.exports = {
