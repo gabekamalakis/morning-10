@@ -54,7 +54,7 @@ function getLocation() {
   }
 
   function error() {
-    status.textContent = "Unable to retrieve your location";
+    status.textContent = "Unable to retrieve your location. Please enter it manually in the text fields below.";
   }
 
   if (!navigator.geolocation) {
