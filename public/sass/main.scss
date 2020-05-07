@@ -53,7 +53,7 @@ $family-sans-serif: "Helvetica", "Arial", sans-serif;
 $grey-dark: #000;
 $grey-light: $lavender;
 $primary: $blue-purple;
-$link: $pink;
+$link: $blue-purple;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
@@ -63,6 +63,7 @@ $control-border-width: 1px;
 // $input-border-color: transparent;
 $input-shadow: none;
 $navbar-breakpoint: 768px;
+$navbar-item-hover-background-color: #FCF7FF;
 $footer-padding: 1rem 1.5rem 1rem;
 
 @import "../../node_modules/bulma/bulma";
