@@ -1,22 +1,55 @@
-// // From https://docs.mapbox.com/mapbox-gl-js/example/locate-user/
-// mapboxgl.accessToken =
-//   "pk.eyJ1IjoicGFnYXJjaWEiLCJhIjoiY2s4ZXNhdDZvMDAwODNtcGhmZWdreHh0eCJ9.LAsRVy-mflZw0l16nB4rzw";
-// const map = new mapboxgl.Map({
-//   container: "map", // container id
-//   style: "mapbox://styles/mapbox/streets-v11",
-//   center: [-96, 37.8], // starting position
-//   zoom: 3, // starting zoom
-// });
+const myMap = document.querySelector("#mapid");
+const myBtn = document.querySelector("#getLocation");
 
-// // Add geolocate control to the map.
-// map.addControl(
-//   new mapboxgl.GeolocateControl({
-//     positionOptions: {
-//       enableHighAccuracy: true,
-//     },
-//     trackUserLocation: true,
-//   })
-// );
+myBtn.addEventListener("click", (e) => {
+  getLocation();
+});
+
+// Modified from https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
+function getLocation() {
+  const status = document.querySelector("#status");
+  const latField = document.querySelector("#lat");
+  const lngField = document.querySelector("#lng");
+
+  function success(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    status.textContent = "";
+    latField.value = latitude;
+    lngField.value = longitude;
+
+    myMap.style.display = "block";
+    const mymap = L.map("mapid").setView([latitude, longitude], 15);
+
+    L.tileLayer(
+      "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+      {
+        attribution:
+          'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,<br />Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: "mapbox/streets-v11",
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken:
+          "pk.eyJ1IjoicGFnYXJjaWEiLCJhIjoiY2s4ZXNhdDZvMDAwODNtcGhmZWdreHh0eCJ9.LAsRVy-mflZw0l16nB4rzw",
+      }
+    ).addTo(mymap);
+
+    const marker = L.marker([latitude, longitude]).addTo(mymap);
+  }
+
+  function error() {
+    status.textContent = "Unable to retrieve your location";
+  }
+
+  if (!navigator.geolocation) {
+    status.textContent = "Geolocation is not supported by your browser";
+  } else {
+    status.textContent = "Locating…";
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+}
 
 // From https://demo.creativebulma.net/components/calendar/v6//#integration
 // Initialize all input of date type.

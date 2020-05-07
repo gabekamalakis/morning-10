@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/main.css" />
     <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""
+  ></script>
+    <link
       href="/scripts/bulma-calendar/dist/css/bulma-calendar.min.css"
       rel="stylesheet"
     />
@@ -13,20 +24,15 @@
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css"
-      rel="stylesheet"
-    />
     <style>
       /* Map styles */
-      /* #map {
-        position: relative;
-        top: 0;
-        bottom: 0;
-        height: 450px;
-        width: 100%;
-      } */
+      #mapid {
+        height: 400px;
+        width: 70%;
+        z-index: 10;
+        margin: 0 auto 12px;
+        display: none;
+      }
 
       /* Calendar styles */
       .datetimepicker {
@@ -167,6 +173,8 @@
 
         <div class="wrapper">
           <h2 class="subtitle">Location</h2>
+          <div id="status"></div>
+          <div id="mapid"></div>
 
           <div class="field is-horizontal">
             <div class="field-label">
@@ -175,7 +183,7 @@
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <button class="button is-primary">
+                  <button id="getLocation" class="button is-primary">
                     <span class="icon">
                       <i class="far fa-compass"></i>
                     </span>
@@ -193,7 +201,12 @@
             <div class="field-body">
               <div class="field">
                 <p class="control">
-                  <input class="input" type="text" placeholder="38.988133" />
+                  <input
+                    class="input"
+                    id="lat"
+                    type="text"
+                    placeholder="38.988133"
+                  />
                 </p>
               </div>
             </div>
@@ -206,12 +219,18 @@
             <div class="field-body">
               <div class="field">
                 <p class="control">
-                  <input class="input" type="text" placeholder="-76.941566" />
+                  <input
+                    class="input"
+                    id="lng"
+                    type="text"
+                    placeholder="-76.941566"
+                  />
                 </p>
               </div>
             </div>
           </div>
         </div>
+
 
         <div class="wrapper">
           <h2 class="subtitle">Date/Time</h2>
