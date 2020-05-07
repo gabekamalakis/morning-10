@@ -5,7 +5,6 @@
 // You can easily customize Bulma with your own variables.
 // Just uncomment the following block to see the result.
 
-
 // // 1. Import the initial variables
 // @import "../../node_modules/bulma/sass/utilities/initial-variables";
 
@@ -31,22 +30,23 @@
 //     background-color: $blue;
 // }
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+
 // Variables from https://bulma.io/documentation/customize/with-node-sass/#6-add-your-own-bulma-styles
 // Set your brand colors
-$purple: #8A4D76;
-$pink: #FA7C91;
+$purple: #8a4d76;
+$pink: #fa7c91;
 $brown: #757763;
-$beige-light: #D0D1CD;
-$beige-lighter: #EFF0EB;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
 //New color scheme
-$green: #52C236;
-$light-green: #C1FFD1;
+$green: #52c236;
+$light-green: #c1ffd1;
 $lightlight: #e8faa7;
 $mega-light: #e9f5dc;
-$white: #FFFFFF;
-$blue-purple: #7826FE;
-$lavender: #F0DDFF;
-
+$white: #ffffff;
+$blue-purple: #7826fe;
+$lavender: #f0ddff;
 
 // Update Bulma's global variables
 $family-sans-serif: "Helvetica", "Arial", sans-serif;
@@ -62,8 +62,10 @@ $body-background-color: $white;
 $control-border-width: 1px;
 // $input-border-color: transparent;
 $input-shadow: none;
+$title-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+$title-weight: 700;
 $navbar-breakpoint: 768px;
-$navbar-item-hover-background-color: #FCF7FF;
+$navbar-item-hover-background-color: #fcf7ff;
 $footer-padding: 1rem 1.5rem 1rem;
 
 @import "../../node_modules/bulma/bulma";
@@ -81,12 +83,14 @@ body {
 
 .navbar {
   background-color: $lavender;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-bottom: 32px;
-    @include until($navbar-breakpoint) {
-      // mobile margin
-      margin-bottom: 16px;
-    }
+  font-family: $title-family;
+  font-weight: 500;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 32px;
+  @include until($navbar-breakpoint) {
+    // mobile margin
+    margin-bottom: 16px;
+  }
 }
 
 .navbar .container {
@@ -96,14 +100,14 @@ body {
 }
 
 .navbar-item {
-    font-size: 1.2rem;
-    -webkit-transition-duration: 0.01s;
-    transition-duration: 0.01s;
+  font-size: 1.2rem;
+  -webkit-transition-duration: 0.01s;
+  transition-duration: 0.01s;
 }
 
 .navbar-item:hover {
-    -webkit-transition-duration: 0.075s;
-    transition-duration: 0.075s;
+  -webkit-transition-duration: 0.075s;
+  transition-duration: 0.075s;
 }
 
 .title:not(:last-child) {
@@ -131,15 +135,15 @@ body {
 }
 
 .wrapper {
-    background-color: $mega-light;
-    border-radius: 2px;
-    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
-    margin-bottom: 24px;
-    padding: 32px;
-    @include until($navbar-breakpoint) {
-      // mobile padding
-      padding: 12px;
-    }
+  background-color: $mega-light;
+  border-radius: 2px;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 24px;
+  padding: 32px;
+  @include until($navbar-breakpoint) {
+    // mobile padding
+    padding: 12px;
+  }
 }
 
 .footer {
@@ -149,22 +153,22 @@ body {
 
 // Animation from https://github.com/jgthms/bulma/issues/1790#issuecomment-558588111
 @include until($tablet) {
-    .navbar-menu {
-      display: block;
-      opacity: 0;
-  
-      position: absolute;
-      left: 0;
-      right: 0;
-  
+  .navbar-menu {
+    display: block;
+    opacity: 0;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+
     transform: translateY(-15%);
-      transition: all .15s ease-in-out;
-      pointer-events: none;
-    }
-  
-    .navbar-menu.is-active {
-      opacity: 1;
-      transform: none;
-      pointer-events: auto;
-    }
+    transition: all 0.15s ease-in-out;
+    pointer-events: none;
   }
+
+  .navbar-menu.is-active {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}
