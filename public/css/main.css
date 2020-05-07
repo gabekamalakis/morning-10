@@ -57,7 +57,7 @@
   vertical-align: top;
   width: 20px; }
   .delete::before, .modal-close::before, .delete::after, .modal-close::after {
-    background-color: white;
+    background-color: #FFFFFF;
     content: "";
     display: block;
     left: 50%;
