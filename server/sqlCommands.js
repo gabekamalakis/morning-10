@@ -25,6 +25,7 @@ async function createTables(dbSettings, data) {
 		// return result;
 	}
 	if (result == "Success") {
+		console.log("Attempting to load data...");
 		try {
 		const db = await open(dbSettings);
 		data.forEach((item) => {
@@ -40,7 +41,7 @@ async function createTables(dbSettings, data) {
 			db.exec(`INSERT INTO user (name, email, phoneNumber, organization, trashType, weight, numBags, longitude, latitude) VALUES ("${itemname}", "${itememail}", "${itemphoneNumber}", "${itemorganization}", "${itemtrashType}", "${itemweight}", "${itemnumBags}", "${itemlongitude}", "${itemlatitude}")`);
 
         	});
-			console.log('data input worked');
+			console.log('Data inputed succesfully');
 
 		}
 		catch(e) {
