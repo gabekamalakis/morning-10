@@ -11,7 +11,7 @@ async function createTables(dbSettings, data) {
 		console.log('Dropping existing databases...');
 		await db.exec('DROP TABLE IF EXISTS user');
 		console.log('Database cleared.');
-		await db.exec('CREATE TABLE IF NOT EXISTS user (name, email, phoneNumber, orgoption, organization, datatime, cleanuptype, trashType, weight, numBags, notes, longitude, latitude)');
+		await db.exec('CREATE TABLE IF NOT EXISTS user (name, email, phoneNumber, organization, datetime, cleanuptype, trashType, weight, numBags, notes, longitude, latitude)');
 
 		result = "Success";
 		console.log("Database Initialized");
@@ -46,12 +46,29 @@ async function createTables(dbSettings, data) {
 
 }
 
-async function addPickup(dbSettings, name, email, phoneNumber, trashType, weight, numBags, longitude, latitude) {
+async function addPickup(dbSettings, jobject) {
 	console.log("Inserting Form data...");
+	const toBeParsed = jobject.json();
+
+	const name = toBeParsed.name;
+	const email = toBeParsed.email;
+	const phoneNumber = toBeParsed.phoneNumber;
+	const organization = toBeParsed.organization;
+	const datetime = toBeParsed.datetime;
+	const cleanuptype = toBeParsed.cleanuptype;
+	const trashType = toBeParsed.trashType;
+	const weight = toBeParsed.weight;
+	const numBags = toBeParsed.numBags
+	const notes = toBeParsed.notes;
+	const longitude = toBeParsed.longitude;
+	const latitude = toBeParsed.latitude;
+
 	const db = open(dbSettings);
-	await db.exec(`INSERT INTO user (name, email, phoneNumber, trashType, weight, numBags, longitude, latitude) VALUES (${name}, ${email}, ${phoneNumber}, ${trashType}, ${weight}, ${numBags}, ${longitude}, ${latitude})`);
+	await db.exec(`INSERT INTO user (name, email, phoneNumber, organization, datetime, cleanuptype, trashType, weight, numBags, notes, longitude, latitude) VALUES ("${name}", "${email}", "${phoneNumber}", "${organization}", "${datetime}", "${cleanuptype}", "${trashType}", "${weight}", "${numBags}", "${notes}", "${longitude}", "${latitude}")`);
 	console.log("Success");
 }
+
+
 
 module.exports = {
 	createTables,
