@@ -40,16 +40,14 @@ app.listen(port, () =>
 );
 
 // App Endpoints
-app
-	.route("/api")
-	.get("/api", async (req, res) => {
+app.get("/api", async (req, res) => {
   		processDataForFrontEnd(req, res);
-	})
+});
 
-	.post('/api', async (req, res) => {
-		processForms(req, res);
-
-	});
+app.post("/api", async (req, res) => {
+		console.log("test post");
+		await processForms(req, res);
+});
 
 // Data Fetching function (Async-Await for much better readability and less headbanging)
 async function processDataForFrontEnd(req, res) {
