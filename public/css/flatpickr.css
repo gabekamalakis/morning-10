@@ -73,7 +73,7 @@
   border-bottom: 0;
 }
 .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time {
-  border: 1px solid rgba(72,72,72,0.2);
+  border-top: 1px solid rgba(72,72,72,0.2);
 }
 .flatpickr-calendar.noCalendar.hasTime .flatpickr-time {
   height: auto;
@@ -370,7 +370,7 @@
   pointer-events: none;
 }
 .flatpickr-current-month .flatpickr-monthDropdown-months {
-  appearance: menulist;
+  appearance: none;
   background: #7826fe;
   border: none;
   border-radius: 0;
@@ -388,8 +388,8 @@
   position: relative;
   vertical-align: initial;
   -webkit-box-sizing: border-box;
-  -webkit-appearance: menulist;
-  -moz-appearance: menulist;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   width: auto;
 }
 .flatpickr-current-month .flatpickr-monthDropdown-months:focus,

@@ -15,20 +15,17 @@
 .flatpickr-calendar.inline {
   box-shadow: none;
   margin: 0 auto;
+  border: none;
+
+}
+
+div.flatpickr-days {
+  border-left: none;
+  border-right: none;
 }
 
 .dt {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-/* .datetimepicker-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
-  .datetimepicker .timepicker .timepicker-time-divider,
-  .timepicker-input-number {
-    color: #363636;
-  } */
