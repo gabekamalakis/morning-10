@@ -23,24 +23,6 @@ const dbSettings = {
 
 // SERVER STARTUP AND DATA LOADING
 
-async function initializeDatabase() {
-	const baseURL = "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json";
-	const response = await fetch(baseURL);
-	let dbstatus = "";
-
-	try {
-		const data = await response.json()
-		await databaseLoader(data);
-		dbstatus = "success";
-
-	} catch(e) {
-		console.log("Database Failure");
-		dbstatus = "failure";
-
-	}
-
-	return dbstatus
-}
 
 initializeDatabase();
 
@@ -57,10 +39,17 @@ app.listen(port, () =>
   console.log(`LitterLogger server listening on port ${port}!`)
 );
 
-// JSON data Features
-app.get("/api", (req, res) => {
-  processDataForFrontEnd(req, res);
-});
+// App Endpoints
+app
+	.route("/api")
+	.get("/api", async (req, res) => {
+  		processDataForFrontEnd(req, res);
+	})
+
+	.post('/api', async (req, res) => {
+		processForms(req, res);
+
+	});
 
 // Data Fetching function (Async-Await for much better readability and less headbanging)
 async function processDataForFrontEnd(req, res) {
@@ -76,7 +65,44 @@ async function processDataForFrontEnd(req, res) {
 	};
 };
 
+// Form Posting function
+async function processForms(req, res) {
+	console.log("/api put request", req.body);
+
+	if (!req.body) {
+		console.log(req.body);
+		res.status("400").json("Please do not leave any fields blank");
+	}
+	else {
+		try {
+			const result = await addPickup(dbSettings, req.body);
+			console.log("Status: ", result);
+			res.json("Request received");
+		}
+		catch(e) {
+			console.log("Error submitting data");
+		};
+	}
+};
+
 // Database loading function
+async function initializeDatabase() {
+	const baseURL = "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json";
+	const response = await fetch(baseURL);
+	let dbstatus = "";
+	try {
+		const data = await response.json()
+		await databaseLoader(data);
+		dbstatus = "success";
+
+	} catch(e) {
+		console.log("Database Failure");
+		dbstatus = "failure";
+
+	}
+
+	return dbstatus
+}
 
 async function databaseLoader(data) {
 	(async () => {

@@ -31,7 +31,7 @@ async function createTables(dbSettings, data) {
 			const itemnumBags = item.total_bags_litter;
 			const itemlongitude = item.geocoded_column.longitude;
 			const itemlatitude = item.geocoded_column.latitude;
-			db.exec(`INSERT INTO user (organization, trashType, weight, numBags, longitude, latitude) VALUES ("${itemorganization}", "${itemtrashType}", "${itemnumBags}", "${itemlongitude}", "${itemlatitude}")`);
+			db.exec(`INSERT INTO user (organization, trashType, numBags, longitude, latitude) VALUES ("${itemorganization}", "${itemtrashType}", "${itemnumBags}", "${itemlongitude}", "${itemlatitude}")`);
 
         	});
 			console.log('Data loaded succesfully');
@@ -65,7 +65,8 @@ async function addPickup(dbSettings, jobject) {
 
 	const db = open(dbSettings);
 	await db.exec(`INSERT INTO user (name, email, phoneNumber, organization, datetime, cleanuptype, trashType, weight, numBags, notes, longitude, latitude) VALUES ("${name}", "${email}", "${phoneNumber}", "${organization}", "${datetime}", "${cleanuptype}", "${trashType}", "${weight}", "${numBags}", "${notes}", "${longitude}", "${latitude}")`);
-	console.log("Success");
+
+	return "Success"
 }
 
 
