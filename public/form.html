@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/form.css" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -15,45 +16,12 @@
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""
     ></script>
-    <link
-      href="/scripts/bulma-calendar/dist/css/bulma-calendar.min.css"
-      rel="stylesheet"
-    />
-    <script src="/scripts/bulma-calendar/dist/js/bulma-calendar.min.js"></script>
+    <link href="/css/flatpickr.css" rel="stylesheet" />
+    <script src="/scripts/flatpickr/dist/flatpickr.min.js"></script>
     <script
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
-    <style>
-      .organization-info {
-        display: none;
-      }
-
-      /* Map styles */
-      #mapid {
-        height: 400px;
-        width: 70%;
-        z-index: 10;
-        margin: 0 auto 12px;
-        display: none;
-      }
-
-      /* Calendar styles */
-      .datetimepicker {
-        box-shadow: none;
-        border-radius: 4px;
-      }
-
-      .datetimepicker-wrapper {
-        display: flex;
-        justify-content: center;
-      }
-
-      .datetimepicker .timepicker .timepicker-time-divider,
-      .timepicker-input-number {
-        color: #363636;
-      }
-    </style>
     <title>LitterLog - Track Litter</title>
     <!-- favicon from favicon.io -->
     <link
@@ -308,7 +276,35 @@
 
         <div class="wrapper">
           <h2 class="subtitle">Date/Time</h2>
-          <input type="datetime" data-display-mode="inline" />
+          <div id="dtPicker"></div><br />
+
+          <div class="dt">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Date</label>
+              </div>
+              <div class="field-body">
+                <div class="field is-narrow">
+                  <p class="control is-expanded">
+                    <input id="date" class="input" type="text" placeholder="YYYY-MM-DD" />
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Time</label>
+              </div>
+              <div class="field-body">
+                <div class="field is-narrow">
+                  <p class="control is-expanded">
+                    <input id="time" class="input" type="text" placeholder="HH:MM" />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="wrapper">
@@ -321,8 +317,11 @@
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <input class="input is-danger" type="text" 
-                  placeholder="i.e. Roadside Litter Pickup">
+                  <input
+                    class="input is-danger"
+                    type="text"
+                    placeholder="i.e. Roadside Litter Pickup"
+                  />
                 </div>
                 <p class="help is-danger">This field is required</p>
               </div>
@@ -336,8 +335,11 @@
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <input class="input is-danger" type="text" 
-                  placeholder="i.e. Garbage bags">
+                  <input
+                    class="input is-danger"
+                    type="text"
+                    placeholder="i.e. Garbage bags"
+                  />
                 </div>
                 <p class="help is-danger">This field is required</p>
               </div>

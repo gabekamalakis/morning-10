@@ -1,0 +1,34 @@
+.organization-info {
+  display: none;
+}
+
+/* Map styles */
+#mapid {
+  height: 400px;
+  width: 70%;
+  z-index: 10;
+  margin: 0 auto 12px;
+  display: none;
+}
+
+/* Calendar styles */
+.flatpickr-calendar.inline {
+  box-shadow: none;
+  margin: 0 auto;
+}
+
+.dt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .datetimepicker-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .datetimepicker .timepicker .timepicker-time-divider,
+  .timepicker-input-number {
+    color: #363636;
+  } */
