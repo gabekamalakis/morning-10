@@ -11,7 +11,7 @@ async function createTables(dbSettings, data) {
 		console.log('Dropping existing databases...');
 		await db.exec('DROP TABLE IF EXISTS user');
 		console.log('Database cleared.');
-		await db.exec('CREATE TABLE IF NOT EXISTS user (name, email, phoneNumber, organization, trashType, weight, numBags, longitude, latitude)');
+		await db.exec('CREATE TABLE IF NOT EXISTS user (name, email, phoneNumber, orgoption, organization, datatime, cleanuptype, trashType, weight, numBags, notes, longitude, latitude)');
 
 		result = "Success";
 		console.log("Database Initialized");
@@ -26,16 +26,12 @@ async function createTables(dbSettings, data) {
 		try {
 		const db = await open(dbSettings);
 		data.forEach((item) => {
-			const itemname = "null";
-			const itememail = "null";
-			const itemphoneNumber = "null";
 			const itemorganization = item.organization;
 			const itemtrashType = item.type_litter;
-			const itemweight = "null";
 			const itemnumBags = item.total_bags_litter;
 			const itemlongitude = item.geocoded_column.longitude;
 			const itemlatitude = item.geocoded_column.latitude;
-			db.exec(`INSERT INTO user (name, email, phoneNumber, organization, trashType, weight, numBags, longitude, latitude) VALUES ("${itemname}", "${itememail}", "${itemphoneNumber}", "${itemorganization}", "${itemtrashType}", "${itemweight}", "${itemnumBags}", "${itemlongitude}", "${itemlatitude}")`);
+			db.exec(`INSERT INTO user (organization, trashType, weight, numBags, longitude, latitude) VALUES ("${itemorganization}", "${itemtrashType}", "${itemnumBags}", "${itemlongitude}", "${itemlatitude}")`);
 
         	});
 			console.log('Data loaded succesfully');
