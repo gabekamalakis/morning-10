@@ -1,4 +1,4 @@
-# Manual
+# LitterLog User Manual
 
 ## Server Configuration
 
@@ -6,8 +6,8 @@
 
 - SQLite Database
 - Heatmap (with leaflet.js)
-- Data fetched from PG County database
-- Bulma.io css framework
+- Data fetched from PG County Open Data API
+- Bulma.io CSS Framework
 - Tests using Cypress.js and Mocha
 
 ## Endpoints:
