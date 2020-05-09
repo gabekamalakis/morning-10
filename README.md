@@ -17,4 +17,9 @@ Target browsers for LitterLog include but are not limited to:
 ???
 
 ## Link to User Manual
+???
+
+***
+
+# Developer Manual
 
