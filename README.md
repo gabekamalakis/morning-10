@@ -1,5 +1,10 @@
-# Litter Logger
+# LitterLog
 
-Litter Logger is a way for PG County residents to help out their community by picking up litter.
+LitterLog is a web application designed for tracking trash collection as well as
+logging any litter around Prince George's County.
 
-Morning 10's INST 377 project
+## LitterLog Heroku Site
+
+https://litter-logger.herokuapp.com/
+
+
