@@ -26,3 +26,18 @@ Other browsers (Edge, Safari, w3m, etc.) are not supported at this time.
 
 # Developer Manual
 
+## Dependencies
+
+## Installation
+    
+## Usage
+
+## Testing
+
+## Server API
+
+### Endpoints
+
+## Known Bugs
+
+## Future Road-map
