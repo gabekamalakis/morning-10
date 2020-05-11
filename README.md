@@ -1,4 +1,5 @@
 # LitterLog
+### Track and visualize PG County litter
 
 LitterLog is a web-based application created by University of Maryland students,
 designed for tracking trash collection as well as logging any litter around 
@@ -26,11 +27,42 @@ Other browsers (Edge, Safari, w3m, etc.) are not supported at this time.
 
 # Developer Manual
 
-## Dependencies
-
 ## Installation
-    
-## Usage
+
+### Getting started
+
+Have an up-to-date version of Node.js: https://nodejs.org/
+
+Clone this repository using your favorite shell
+```
+git clone https://github.com/gabekamalakis/morning-10.git
+```
+
+**OR** use GitHub Desktop
+
+### Dependencies
+
+While inside the application directory, install all node dependencies
+```
+npm install
+```
+
+## Deployment
+
+Create /tmp directory within the application directory
+```
+mkdir tmp
+```
+
+Initialize empty database to write to
+```
+touch tmp/database.db
+```
+
+Start the application server
+```
+npm start
+```
 
 ## Testing
 
@@ -41,3 +73,5 @@ Other browsers (Edge, Safari, w3m, etc.) are not supported at this time.
 ## Known Bugs
 
 ## Future Road-map
+
+## License
