@@ -6,9 +6,9 @@
 
 - SQLite Database
 - Heatmap (with leaflet.js)
-- Data fetched from PG County database
-- Bulma.io css framework
-- Tests using Cypress.js and Mocha
+- Data Fetched from PG County Database
+- Bulma.io CSS Framework
+- Tests Using Cypress.js and Mocha
 
 ## Endpoints:
 
