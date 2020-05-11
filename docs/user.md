@@ -12,3 +12,4 @@
 
 ## Endpoints:
 
+The end result is to produce an application that allows users to track litter (think Waze or Pokemon Go but for litter). 
