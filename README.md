@@ -8,7 +8,9 @@ Prince George's County.
 With LitterLog, users can see the volume of trash that has been collected in PG 
 County via the heatmap, or log any trash they encounter by using the form.
 
-![LitterLog demo](docs/demo.gif)
+<p align="center">
+  <img width="600" height="338" src="docs/demo.gif">
+</p>
 
 ## LitterLog Heroku Site
 
