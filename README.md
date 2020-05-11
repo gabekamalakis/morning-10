@@ -11,15 +11,18 @@ County via the heatmap, or log any trash they encounter by using the form.
 
 https://litter-logger.herokuapp.com/
 
-## Description of Target Browsers
+## Target Browsers
 
-Target browsers for LitterLog include but are not limited to:
-???
+LitterLog has been tested on the following desktop and mobile browsers:
+- Chrome 81+
+- Firefox 76+
 
-## Link to User Manual
-???
+Other browsers (Edge, Safari, w3m, etc.) are not supported at this time.
 
-***
+## Manual Links
+[User Manual](https://github.com/gabekamalakis/morning-10/blob/develop/docs/user.md)
+
+[Developer Manual](https://github.com/gabekamalakis/morning-10/tree/develop#developer-manual)
 
 # Developer Manual
 
