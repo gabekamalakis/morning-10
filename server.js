@@ -40,12 +40,12 @@ app.listen(port, () =>
 );
 
 // App Endpoints
-app.get("/api", async (req, res) => {
+app.route("/api")
+	.get(async (req, res) => {
   		processDataForFrontEnd(req, res);
-});
-
-app.post("/api", async (req, res) => {
-		console.log("test post");
+	})
+	.put(async (req, res) => {
+		console.log("Form Submitting...");
 		await processForms(req, res);
 });
 
@@ -63,7 +63,7 @@ async function processDataForFrontEnd(req, res) {
 	};
 };
 
-// Form Posting function
+// Loading Form data to database function
 async function processForms(req, res) {
 	console.log("/api put request", req.body);
 

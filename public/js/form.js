@@ -80,25 +80,27 @@ function getLocation() {
   }
 }
 
-async function sendForm(e) {
-	e.preventDefault();
+async function sendForm(data) {
+	// e.preventDefault();
 
-	const formio = document.querySelector("#mainForm");
-	const submit = document.querySelector("#submitB");
+	// const submit = document.querySelector("#submitB");
 
+	// const dio = new FormData(formio);
 
-	const dio = new FormData(formio);
-
-	const form = await fetch("/api", {
+	const response = await fetch("/api", {
 		method: "PUT",
 		headers: {
-			"Content-Type" : "application/json",
+			"Accept" : 'application/json',
+			"Content-Type" : "application/json"
 		},
 		// Needs Form elements in the fromEntries box
-		body: JSON.stringify(Object.fromEntries(dio))
+		body: JSON.stringify(data)
 		});
+	return response;
 
 }
-
-const submitter = document.querySelector("#submitB");
-submitter.addEventListener("click", sendForm);
+submitter = document.querySelector("#submitB");
+const formio = { test: "test" };
+submitter.addEventListener("click", sendForm(formio).
+					then(data => {
+						console.log(data);}));
