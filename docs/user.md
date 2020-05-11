@@ -1,6 +1,6 @@
 # LitterLog User Manual
 
-## Server Configuration
+## Server Configuration:
 
 ## Main Components:
 
