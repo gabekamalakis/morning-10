@@ -11,7 +11,7 @@ async function createTables(dbSettings, data) {
 		console.log('Dropping existing databases...');
 		await db.exec('DROP TABLE IF EXISTS user');
 		console.log('Database cleared.');
-		await db.exec('CREATE TABLE IF NOT EXISTS user (name, email, phoneNumber, organization, datetime, cleanuptype, trashType, weight, numBags, notes, longitude, latitude)');
+		await db.exec('CREATE TABLE IF NOT EXISTS user (name, email, phoneNumber, organization, orgNumber, datetime, cleanuptype, litterType, weight, numBags, notes, longitude, latitude)');
 
 		result = "Success";
 		console.log("Database Initialized");
@@ -27,11 +27,11 @@ async function createTables(dbSettings, data) {
 		const db = await open(dbSettings);
 		data.forEach((item) => {
 			const itemorganization = item.organization;
-			const itemtrashType = item.type_litter;
+			const itemlitterType = item.type_litter;
 			const itemnumBags = item.total_bags_litter;
 			const itemlongitude = item.geocoded_column.longitude;
 			const itemlatitude = item.geocoded_column.latitude;
-			db.exec(`INSERT INTO user (organization, trashType, numBags, longitude, latitude) VALUES ("${itemorganization}", "${itemtrashType}", "${itemnumBags}", "${itemlongitude}", "${itemlatitude}")`);
+			db.exec(`INSERT INTO user (organization, litterType, numBags, longitude, latitude) VALUES ("${itemorganization}", "${itemlitterType}", "${itemnumBags}", "${itemlongitude}", "${itemlatitude}")`);
 
         	});
 			console.log('Data loaded succesfully');
@@ -48,25 +48,33 @@ async function createTables(dbSettings, data) {
 
 async function addPickup(dbSettings, jobject) {
 	console.log("Inserting Form data...");
-	const toBeParsed = jobject.json();
 
-	const name = toBeParsed.name;
-	const email = toBeParsed.email;
-	const phoneNumber = toBeParsed.phoneNumber;
-	const organization = toBeParsed.organization;
-	const datetime = toBeParsed.datetime;
-	const cleanuptype = toBeParsed.cleanuptype;
-	const trashType = toBeParsed.trashType;
-	const weight = toBeParsed.weight;
-	const numBags = toBeParsed.numBags
-	const notes = toBeParsed.notes;
-	const longitude = toBeParsed.longitude;
-	const latitude = toBeParsed.latitude;
+	const name = jobject.name;
+	const email = jobject.email;
+	const phoneNumber = jobject.phoneNumber;
+	const organization = jobject.organization;
+	const orgNumber = jobject.orgNumber;
+	const datetime = jobject.datetime;
+	const cleanuptype = jobject.cleanupType;
+	const litterType = jobject.litterType;
+	const weight = jobject.weight;
+	const numBags = jobject.numBags
+	const notes = jobject.notes;
+	const longitude = jobject.longitude;
+	const latitude = jobject.latitude;
 
-	const db = open(dbSettings);
-	await db.exec(`INSERT INTO user (name, email, phoneNumber, organization, datetime, cleanuptype, trashType, weight, numBags, notes, longitude, latitude) VALUES ("${name}", "${email}", "${phoneNumber}", "${organization}", "${datetime}", "${cleanuptype}", "${trashType}", "${weight}", "${numBags}", "${notes}", "${longitude}", "${latitude}")`);
+	try {
+		const db = await open(dbSettings);
 
-	return "Success"
+		await db.exec(`INSERT INTO user (name, email, phoneNumber, organization, orgNumber, datetime, cleanupType, litterType, weight, numBags, notes, longitude, latitude) VALUES ("${name}", "${email}", "${phoneNumber}", "${organization}", "${orgNumber}", "${datetime}", "${cleanuptype}", "${litterType}", "${weight}", "${numBags}", "${notes}", "${longitude}", "${latitude}")`);
+		const test = await db.get(`SELECT * from user where name = "${name}"`);
+		console.log(test);
+		return "Success"
+
+	} catch(e) {
+		console.log("Database Error on insert");
+		return "Failure";
+	}
 }
 
 

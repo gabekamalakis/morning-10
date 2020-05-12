@@ -71,7 +71,7 @@ async function processForms(req, res) {
 		}
 		catch(e) {
 			console.log("Error submitting data");
-			// console.log("Status: ", result);
+			console.log("Status: ", result);
 			res.redirect("/error");
 		};
 	}
