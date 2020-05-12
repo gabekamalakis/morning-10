@@ -45,4 +45,8 @@ Link to PG County open data set:
 ???
 
 ## Future Work
-???
+
+- Expand target area
+  - Possibly include more counties if datasets exist.
+- Add a filter
+  - Additional functionality for the heat-map to show trash collected by litter type.
