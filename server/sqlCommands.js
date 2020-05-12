@@ -57,9 +57,13 @@ async function addPickup(dbSettings, jobject) {
 	const datetime = jobject.datetime;
 	const cleanuptype = jobject.cleanupType;
 	const litterType = jobject.litterType;
+	// This needs to be an integer/float
 	const weight = jobject.weight;
 	const numBags = jobject.numBags
+
 	const notes = jobject.notes;
+
+	// These need to be converted to floats
 	const longitude = jobject.longitude;
 	const latitude = jobject.latitude;
 
