@@ -54,7 +54,7 @@ Link to PG County open data set:
 ## How the final system addresses the problem
 
 - Visually Appealing
-  - The homepage shows the public's opion about the app (very important for businesses that are just starting).
+  - The homepage shows the public's opinion about the app (very important for businesses that are just starting).
   - The heatmap is easy to read.
 - User Input/Crowdsourcing 
   - Having the data come from crowdsourcing reduces burden on the developers to keep the dataset updated.
