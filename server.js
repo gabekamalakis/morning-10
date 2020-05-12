@@ -1,20 +1,13 @@
-// Importing required libraries
-//const express = require("express");
+// Required Modules
 import express from "express";
-//const fetch = require("node-fetch");
 import fetch from "node-fetch";
 
-// import createTables from "./server/sqlCommands";
-// import addPickup from "./server/sqlCommands";
-
+const bodyParser = require("body-parser");
 const { createTables, addPickup } = require("./server/sqlCommands");
 
 // Importing SQLite
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
-
-// Error checking
-sqlite3.verbose();
 
 const dbSettings = {
 	filename: './tmp/database.db',
@@ -22,8 +15,6 @@ const dbSettings = {
 };
 
 // SERVER STARTUP AND DATA LOADING
-
-
 initializeDatabase();
 
 /// APPLICATION
@@ -31,9 +22,11 @@ initializeDatabase();
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(express.static("public"));
+app.use(bodyParser.json());
 
 // Load node_modules from here https://stackoverflow.com/a/27464258
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
+
 
 app.listen(port, () =>
   console.log(`LitterLogger server listening on port ${port}!`)
@@ -65,7 +58,7 @@ async function processDataForFrontEnd(req, res) {
 
 // Loading Form data to database function
 async function processForms(req, res) {
-	console.log("/api put request", req.body);
+	console.log("Form Appearance", req.body);
 
 	if (!req.body) {
 		console.log(req.body);
@@ -111,7 +104,6 @@ async function databaseLoader(data) {
 		catch(e) {
 			console.log("Error Loading Database");
 		};
-
 	})();
 };
 

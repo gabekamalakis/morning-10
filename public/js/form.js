@@ -80,12 +80,17 @@ function getLocation() {
   }
 }
 
-async function sendForm(data) {
-	// e.preventDefault();
+async function sendForm(e) {
+	e.preventDefault();
+	console.log("Client Submission started...")
 
+	const test = '{ "test" : "test" }'
+	// const formio = document.querySelector("#mainForm");
 	// const submit = document.querySelector("#submitB");
 
 	// const dio = new FormData(formio);
+
+	console.log(test);
 
 	const response = await fetch("/api", {
 		method: "PUT",
@@ -94,13 +99,12 @@ async function sendForm(data) {
 			"Content-Type" : "application/json"
 		},
 		// Needs Form elements in the fromEntries box
-		body: JSON.stringify(data)
+		body: test
 		});
+	console.log("Client form Submitted");
+
 	return response;
 
 }
 submitter = document.querySelector("#submitB");
-const formio = { test: "test" };
-submitter.addEventListener("click", sendForm(formio).
-					then(data => {
-						console.log(data);}));
+submitter.addEventListener("click", sendForm);
