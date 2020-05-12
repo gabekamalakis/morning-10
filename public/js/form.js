@@ -1,3 +1,4 @@
+// Update date/time fields based on selection
 const dateField = document.querySelector("input[name='date']");
 const timeField = document.querySelector("input[name='time']");
 
@@ -13,6 +14,7 @@ const cal = flatpickr(dtPicker, {
   },
 });
 
+// Display organization information
 const yesOrg = document.querySelector("#yes");
 const noOrg = document.querySelector("#no");
 const orgInfo = document.querySelector(".organization-info");
