@@ -56,9 +56,9 @@ Link to PG County open data set:
 - Visually Appealing
   - The homepage shows the public's opion about the app (very important for businesses that are just starting).
   - The heatmap is easy to read.
- -User Input/Crowdsourcing 
-  -Having the data come from crowdsourcing reduces burden on the developers to keep the dataset updated.
-  -The submission page is straight-forward. It is quick and easy to submit for the users. 
+ - User Input/Crowdsourcing 
+  - Having the data come from crowdsourcing reduces burden on the developers to keep the dataset updated.
+  - The submission page is straight-forward. It is quick and easy to submit for the users. 
  
 
 ## Challenges
