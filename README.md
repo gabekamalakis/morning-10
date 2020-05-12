@@ -66,16 +66,6 @@ This installs:
 
 ## Deployment
 
-Create /tmp directory within the application directory
-```
-mkdir tmp
-```
-
-Initialize empty database to write to
-```
-touch tmp/database.db
-```
-
 Start the application server
 ```
 npm start
