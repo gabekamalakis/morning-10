@@ -1,46 +1,10 @@
 @charset "utf-8";
 
-// Customization https://github.com/jgthms/bulma-start/blob/master/_sass/main.scss
-
-// You can easily customize Bulma with your own variables.
-// Just uncomment the following block to see the result.
-
-// // 1. Import the initial variables
-// @import "../../node_modules/bulma/sass/utilities/initial-variables";
-
-// // 2. Set your own initial variables
-// // Update the blue shade, used for links
-// $blue: #06bcef;
-// // Add pink and its invert
-// $pink: #ff8080;
-// $pink-invert: #fff;
-// // Update the sans-serif font family
-// $family-sans-serif: "Helvetica", "Arial", sans-serif;
-
-// // 3. Set the derived variables
-// // Use the new pink as the prpinkimary color
-// $primary: $pink;
-// $primary-invert: $pink-invert;
-
-// // 4. Import the rest of Bulma
-// @import "../../node_modules/bulma/bulma";
-
-// // 5. Set your own rules?
-// html {
-//     background-color: $blue;
-// }
-
 // Import Stevie Sans Adobe font
 @import url("https://use.typekit.net/nae0otx.css");
 
 // Variables from https://bulma.io/documentation/customize/with-node-sass/#6-add-your-own-bulma-styles
-// Set your brand colors
-$purple: #8a4d76;
-$pink: #fa7c91;
-$brown: #757763;
-$beige-light: #d0d1cd;
-$beige-lighter: #eff0eb;
-//New color scheme
+// Set color scheme
 $green: #52c236;
 $light-green: #c1ffd1;
 $lightlight: #e8faa7;
@@ -61,7 +25,6 @@ $fullhd-enabled: false;
 // Update some of Bulma's component variables
 $body-background-color: $white;
 $control-border-width: 1px;
-// $input-border-color: transparent;
 $input-shadow: none;
 $title-family: stevie-sans, "Helvetica", "Arial", sans-serif;
 $title-weight: 700;
@@ -70,8 +33,10 @@ $navbar-item-hover-background-color: #fcf7ff;
 $card-shadow: none;
 $footer-padding: 1rem 1.5rem 1rem;
 
+// Import Bulma
 @import "../../node_modules/bulma/bulma";
 
+// Set remaining CSS style rules
 body {
   // Fix footer to bottom https://github.com/jgthms/bulma/issues/47#issuecomment-285078785
   display: flex;
