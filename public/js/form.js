@@ -1,5 +1,6 @@
-const dateField = document.querySelector("#date");
-const timeField = document.querySelector("#time");
+// Update date/time fields based on selection
+const dateField = document.querySelector("input[name='date']");
+const timeField = document.querySelector("input[name='time']");
 
 const dtPicker = document.querySelector("#dtPicker");
 const cal = flatpickr(dtPicker, {
@@ -13,6 +14,7 @@ const cal = flatpickr(dtPicker, {
   },
 });
 
+// Display organization information
 const yesOrg = document.querySelector("#yes");
 const noOrg = document.querySelector("#no");
 const orgInfo = document.querySelector(".organization-info");
@@ -53,7 +55,7 @@ function getLocation() {
       "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
       {
         attribution:
-          'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,<br />Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
         id: "mapbox/streets-v11",
         tileSize: 512,
@@ -114,7 +116,7 @@ async function createForm() {
 	// Our api might not require this
 	const date = document.querySelector("input[name='date']").value;
 	const time = document.querySelector("input[name='time']").value;
-	const datetime = date + time
+	const datetime = `${date} ${time}`
 	formData.append("datetime", datetime);
 
 	const cleanupType = document.querySelector("input[name='cleanupType']").value;
@@ -139,8 +141,12 @@ async function createForm() {
 	formData.append("notes", notes);
 
 	// console.log(formData);
-
-	return formData;
+	if (!valueMissing) {
+		return formData;
+	}
+	else  {
+		return 0;
+	}
 };
 
 async function sendForm(e) {

@@ -111,3 +111,4 @@ npm test
 - Add more comprehensive tests using Cypress
 
 ## License
+[ISC](https://choosealicense.com/licenses/isc/)

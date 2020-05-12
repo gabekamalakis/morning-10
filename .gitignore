@@ -2,3 +2,5 @@
 
 node_modules/
 tmp/database.db
+*/tmp/database.db
+.vscode/
