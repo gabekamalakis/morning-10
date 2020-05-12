@@ -35,15 +35,14 @@ app.listen(port, () =>
 // App Endpoints
 app.route("/api")
 	.get(async (req, res) => {
-  		processDataForFrontEnd(req, res);
+  		processDataForMap(req, res);
 	})
 	.put(async (req, res) => {
-		console.log("Form Submitting...");
 		await processForms(req, res);
 });
 
 // Data Fetching function (Async-Await for much better readability and less headbanging)
-async function processDataForFrontEnd(req, res) {
+async function processDataForMap(req, res) {
 	try {
 		// Fetch from Database
 		const dataPoints = await locationFetcher(dbSettings);
@@ -58,7 +57,7 @@ async function processDataForFrontEnd(req, res) {
 
 // Loading Form data to database function
 async function processForms(req, res) {
-	console.log("Form Appearance", req.body);
+	console.log(req.body);
 
 	if (!req.body) {
 		console.log(req.body);
@@ -72,6 +71,8 @@ async function processForms(req, res) {
 		}
 		catch(e) {
 			console.log("Error submitting data");
+			// console.log("Status: ", result);
+			res.redirect("/error");
 		};
 	}
 };
