@@ -1,3 +1,30 @@
+const dateField = document.querySelector("#date");
+const timeField = document.querySelector("#time");
+
+const dtPicker = document.querySelector("#dtPicker");
+const cal = flatpickr(dtPicker, {
+  enableTime: true,
+  dateFormat: "Y-m-d H:i",
+  time_24hr: true,
+  inline: true,
+  onChange: function(selectedDates, dateStr, instance) {
+    dateField.value = dateStr.slice(0,10);
+    timeField.value = dateStr.slice(11)
+  },
+});
+
+const yesOrg = document.querySelector("#yes");
+const noOrg = document.querySelector("#no");
+const orgInfo = document.querySelector(".organization-info");
+
+yesOrg.addEventListener("click", (e) => {
+  orgInfo.style.display = "block";
+});
+
+noOrg.addEventListener("click", (e) => {
+  orgInfo.style.display = "none";
+});
+
 const myMap = document.querySelector("#mapid");
 const myBtn = document.querySelector("#getLocation");
 
@@ -8,8 +35,8 @@ myBtn.addEventListener("click", (e) => {
 // Modified from https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
 function getLocation() {
   const status = document.querySelector("#status");
-  const latField = document.querySelector("#lat");
-  const lngField = document.querySelector("#lng");
+  const latField = document.querySelector("#latitude");
+  const lngField = document.querySelector("#longitude");
 
   function success(position) {
     const latitude = position.coords.latitude;
@@ -40,37 +67,104 @@ function getLocation() {
   }
 
   function error() {
-    status.textContent = "Unable to retrieve your location";
+    status.textContent =
+      "Unable to retrieve your location. Please enter it manually in the text fields below.";
   }
 
   if (!navigator.geolocation) {
     status.textContent = "Geolocation is not supported by your browser";
+    error();
   } else {
     status.textContent = "Locating…";
     navigator.geolocation.getCurrentPosition(success, error);
   }
 }
 
-// From https://demo.creativebulma.net/components/calendar/v6//#integration
-// Initialize all input of date type.
-const options = {
-  color: "dark", // colors here: https://bulma.io/documentation/elements/button/#colors
+async function createForm() {
+
+	const formData = new FormData();
+
+	const name = document.querySelector("input[name='username']").value;
+	const email = document.querySelector("input[name='email']").value;
+	const phoneNumber = document.querySelector("input[name='phoneNumber']").value;
+	formData.append("name", name);
+	formData.append("email", email);
+	formData.append("phoneNumber", phoneNumber);
+
+	// If Then statement
+	const orgOption = document.querySelector("input[name='member']:checked").value;
+	if (orgOption === "yes") {
+		organization = document.querySelector("input[name='organization']").value;
+		orgNumber = document.querySelector("input[name='orgNumber'").value;
+		formData.append("organization", organization);
+		formData.append("orgNumber", orgNumber);
+	}
+	else {
+		formData.append("organization", "null");
+		formData.append("orgNumber", "null");
+
+	};
+
+
+	const longitude = document.querySelector("input[name='longitude']").value;
+	const latitude = document.querySelector("input[name='latitude']").value;
+	formData.append("longitude", longitude);
+	formData.append("latitude", latitude);
+
+	// Our api might not require this
+	const date = document.querySelector("input[name='date']").value;
+	const time = document.querySelector("input[name='time']").value;
+	const datetime = date + time
+	formData.append("datetime", datetime);
+
+	const cleanupType = document.querySelector("input[name='cleanupType']").value;
+	const litterType = document.querySelector("input[name='litterType']").value;
+	formData.append("cleanupType", cleanupType);
+	formData.append("litterType", litterType);
+
+	const weighttype = document.querySelector('input[name="amount"]:checked').value;
+	const litterAmount = document.querySelector("input[name='litterAmount']").value;
+
+	if (weighttype === "lbs" ) {
+		formData.append("weight", litterAmount);
+		formData.append("numBags", "null");
+	}
+	else {
+		formData.append("weight", "null");
+		formData.append("numBags", litterAmount);
+	}
+
+
+	const notes = document.querySelector(".textarea").value;
+	formData.append("notes", notes);
+
+	// console.log(formData);
+
+	return formData;
 };
-const calendars = bulmaCalendar.attach('[type="datetime"]', options);
 
-// Loop on each calendar initialized
-calendars.forEach((calendar) => {
-  // Add listener to date:selected event
-  calendar.on("date:selected", (date) => {
-    console.log(date);
-  });
-});
+async function sendForm(e) {
+	e.preventDefault();
+	console.log("Client Submission started...")
 
-// To access to bulmaCalendar instance of an element
-const element = document.querySelector("#my-element");
-if (element) {
-  // bulmaCalendar instance is available as element.bulmaCalendar
-  element.bulmaCalendar.on("select", (datepicker) => {
-    console.log(datepicker.data.value());
-  });
+	const formio = await createForm();
+
+	const dio = JSON.stringify(Object.fromEntries(formio));
+
+	const response = await fetch("/api", {
+		method: "PUT",
+		headers: {
+			"Accept" : 'application/json',
+			"Content-Type" : "application/json"
+		},
+		// Needs Form elements in the fromEntries box
+		body: dio
+		});
+	console.log("Client form Submitted");
+
+	const result = await response.json();
+	alert("Submitted!", result);
+
 }
+submitter = document.querySelector("#submitB");
+submitter.addEventListener("click", sendForm);
