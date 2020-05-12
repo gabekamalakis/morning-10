@@ -3,10 +3,10 @@ Application by Morning 10: Gabe Kamalakis, Andrew Garcia, Sarwat Kazmi, Brigidan
 ### Track and visualize PG County litter
 
 LitterLog is a web-based application created by University of Maryland students,
-designed for tracking trash collection as well as logging any litter around 
+designed for tracking trash collection as well as logging any litter around
 Prince George's County.
 
-With LitterLog, users can see the volume of trash that has been collected in PG 
+With LitterLog, users can see the volume of trash that has been collected in PG
 County via the heatmap, or log any trash they encounter by using the form.
 
 <p align="center">
@@ -73,12 +73,41 @@ npm start
 
 ## Testing
 
+In main repository directory:
+
+```
+npm test
+```
+
 ## Server API
 
 ### Endpoints
 
+**PUT**:
+- PUT request route is for form submissions
+- PUT requests can be submitted to `/api`
+- PUT request must be in json form and conform to the parameters set by the database (for the form)
+- PUT requests return a conformation string or an error message once completed
+
+**GET**:
+- GET request route is for the Heat Map
+- GET requests can be retrieved from `/api`
+- GET request retrieve a list of JSON objects containing Litter Pickup information from the database
+- Litter Pickup information includes latitude, longitude, and number of bags
+
+
 ## Known Bugs
 
+- Database has little to no error checking
+- There is NO security of any kind, do not submit sensitive data in the live application
+- The "Use Current Location" button does not work all the time
+- SQLite does not return verbose errors
+
 ## Future Road-map
+
+- Add more security and error checking to form submissions
+- Add a filtering option for the heatmap
+- Add tutorials and information for each part of the form
+- Add more comprehensive tests using Cypress
 
 ## License
