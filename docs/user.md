@@ -1,10 +1,10 @@
 # LitterLog User Manual
 
-This application was created by the Morning 10 Project group in order to provide PG County Residents and environmental activists with a dependable ad consistent way to log and keep track of litter. This application contains two main parts, the map and the submission form.
+This application was created by the Morning 10 Project group in order to provide PG County Residents and environmental activists with a dependable and consistent way to log and keep track of litter. This application contains two main parts, the map and the submission form.
 
 ## The Litter Logger Heat-map
 
-This map is a visualization of all of the litter currently logged in our database. By using the zoom features, a user can navigate PG County, and look at the concentration of looked litter.
+This map is a visualization of all of the litter currently logged in our database. By using the zoom features, a user can navigate PG County, and look at the concentration of logged litter.
 
 ## The Litter Logger Submission Form
 
