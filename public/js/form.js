@@ -114,7 +114,7 @@ async function createForm() {
 	// Our api might not require this
 	const date = document.querySelector("input[name='date']").value;
 	const time = document.querySelector("input[name='time']").value;
-	const datetime = date + time
+	const datetime = `${date} ${time}`
 	formData.append("datetime", datetime);
 
 	const cleanupType = document.querySelector("input[name='cleanupType']").value;
@@ -139,8 +139,12 @@ async function createForm() {
 	formData.append("notes", notes);
 
 	// console.log(formData);
-
-	return formData;
+	if (!valueMissing) {
+		return formData;
+	}
+	else  {
+		return 0;
+	}
 };
 
 async function sendForm(e) {
