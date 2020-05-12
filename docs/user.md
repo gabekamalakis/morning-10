@@ -1,22 +1,11 @@
 # LitterLog User Manual
 
-## Server Configuration:
+This application was created by the Morning 10 Project group in order to provide PG County Residents and environmental activists with a dependable ad consistent way to log and keep track of litter. This application contains two main parts, the map and the submission form.
 
-- What even goes in here?
-- Will confer with code monkeys about servery stuff
+## The Litter Logger Heat-map
 
-## Main Components:
+This map is a visualization of all of the litter currently logged in our database. By using the zoom features, a user can navigate PG County, and look at the concentration of looked litter.
 
-- SQLite Database
-  - Used for embedded storage of our data in the back end of our system
-- Heatmap (with leaflet.js)
-  - Used for presentation of our data in the form of a heatmap. Has zooming capabilities and allows for data to update when submissions are added.
-- Data fetched from PG County Open Data API
-  - The base of our data, however we moved this data to be embedded within our SQLite.
-- Bulma.io CSS Framework
-  - Used as the foundation of our CSS to enhance our application with a smooth and consistent finish.
-- Tests using Cypress.js and Mocha
-  - Used for reliable and flexible testing for browser based applications.
+## The Litter Logger Submission Form
 
-## Endpoints:
-
+This submission form is the way to add new data to the database and to the heat-map. When out for a walk, if a user sees any litter and decides to log it, they can fill out this form with the relevant information. They can enter their personal information, and also information about the litter, such as its location, the time of logging, and the type/amount of litter being logged.
