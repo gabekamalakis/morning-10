@@ -1,20 +1,13 @@
-// Importing required libraries
-//const express = require("express");
+// Required Modules
 import express from "express";
-//const fetch = require("node-fetch");
 import fetch from "node-fetch";
 
-// import createTables from "./server/sqlCommands";
-// import addPickup from "./server/sqlCommands";
-
+const bodyParser = require("body-parser");
 const { createTables, addPickup } = require("./server/sqlCommands");
 
 // Importing SQLite
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
-
-// Error checking
-sqlite3.verbose();
 
 const dbSettings = {
 	filename: './tmp/database.db',
@@ -22,12 +15,73 @@ const dbSettings = {
 };
 
 // SERVER STARTUP AND DATA LOADING
+initializeDatabase();
 
+/// APPLICATION
+// Express settings
+const app = express();
+const port = process.env.PORT || 3000;
+app.use(express.static("public"));
+app.use(bodyParser.json());
+
+// Load node_modules from here https://stackoverflow.com/a/27464258
+app.use('/scripts', express.static(__dirname + '/node_modules/'));
+
+
+app.listen(port, () =>
+  console.log(`LitterLogger server listening on port ${port}!`)
+);
+
+// App Endpoints
+app.route("/api")
+	.get(async (req, res) => {
+  		processDataForMap(req, res);
+	})
+	.put(async (req, res) => {
+		await processForms(req, res);
+});
+
+// Data Fetching function (Async-Await for much better readability and less headbanging)
+async function processDataForMap(req, res) {
+	try {
+		// Fetch from Database
+		const dataPoints = await locationFetcher(dbSettings);
+
+		await res.send({ dataPoints })
+		}
+	catch(e) {
+		console.log('error fetching from database');
+		res.redirect("/error")
+	};
+};
+
+// Loading Form data to database function
+async function processForms(req, res) {
+	console.log(req.body);
+
+	if (!req.body) {
+		console.log(req.body);
+		res.status("400").json("Please do not leave any fields blank");
+	}
+	else {
+		try {
+			const result = await addPickup(dbSettings, req.body);
+			console.log("Status: ", result);
+			res.json("Request received");
+		}
+		catch(e) {
+			console.log("Error submitting data");
+			console.log("Status: ", result);
+			res.redirect("/error");
+		};
+	}
+};
+
+// Database loading function
 async function initializeDatabase() {
 	const baseURL = "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json";
 	const response = await fetch(baseURL);
 	let dbstatus = "";
-
 	try {
 		const data = await response.json()
 		await databaseLoader(data);
@@ -42,42 +96,6 @@ async function initializeDatabase() {
 	return dbstatus
 }
 
-initializeDatabase();
-
-/// APPLICATION
-// Express settings
-const app = express();
-const port = process.env.PORT || 3000;
-app.use(express.static("public"));
-
-// Load node_modules from here https://stackoverflow.com/a/27464258
-app.use('/scripts', express.static(__dirname + '/node_modules/'));
-
-app.listen(port, () =>
-  console.log(`LitterLogger server listening on port ${port}!`)
-);
-
-// JSON data Features
-app.get("/api", (req, res) => {
-  processDataForFrontEnd(req, res);
-});
-
-// Data Fetching function (Async-Await for much better readability and less headbanging)
-async function processDataForFrontEnd(req, res) {
-	try {
-		// Fetch from Database
-		const dataPoints = await locationFetcher(dbSettings);
-
-		await res.send({ dataPoints })
-		}
-	catch(e) {
-		console.log('error fetching from database');
-		res.redirect("/error")
-	};
-};
-
-// Database loading function
-
 async function databaseLoader(data) {
 	(async () => {
 		try {
@@ -87,7 +105,6 @@ async function databaseLoader(data) {
 		catch(e) {
 			console.log("Error Loading Database");
 		};
-
 	})();
 };
 

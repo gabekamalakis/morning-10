@@ -98,7 +98,9 @@
               <div class="field">
                 <p class="control is-expanded">
                   <input
+	 	    id="name"
                     class="input"
+		    name="username"
                     type="text"
                     placeholder="Firstname Lastname"
                   />
@@ -116,6 +118,8 @@
                 <p class="control is-expanded">
                   <input
                     class="input"
+		    id="email"
+		    name="email"
                     type="email"
                     placeholder="email@address.com"
                   />
@@ -132,6 +136,7 @@
               <div class="field">
                 <p class="control is-expanded">
                   <input
+		    name="phoneNumber"
                     class="input"
                     type="tel"
                     placeholder="(XXX)-XXX-XXXX"
@@ -149,11 +154,11 @@
               <div class="field is-narrow">
                 <div class="control">
                   <label class="radio">
-                    <input id="yes" type="radio" name="member" />
+                    <input id="yes" value="yes" type="radio" name="member" />
                     Yes
                   </label>
                   <label class="radio">
-                    <input id="no" type="radio" name="member" />
+                    <input id="no" value="no" type="radio" name="member" />
                     No
                   </label>
                 </div>
@@ -172,7 +177,7 @@
               <div class="field-body">
                 <div class="field">
                   <p class="control is-expanded">
-                    <input class="input" type="text" placeholder="Org Name" />
+                    <input name="organization" class="input" type="text" placeholder="Org Name" />
                   </p>
                 </div>
               </div>
@@ -186,6 +191,8 @@
                 <div class="field">
                   <p class="control is-expanded">
                     <input
+		      id="orgNumber"
+		      name="orgNumber"
                       class="input"
                       type="text"
                       placeholder="(XXX)-XXX-XXXX"
@@ -195,22 +202,6 @@
               </div>
             </div>
 
-            <div class="field is-horizontal">
-              <div class="field-label is-normal">
-                <label class="label">Permit</label>
-              </div>
-              <div class="field-body">
-                <div class="field">
-                  <p class="control is-expanded">
-                    <input
-                      class="input"
-                      type="text"
-                      placeholder="(XXX)-XXX-XXXX"
-                    />
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -226,7 +217,7 @@
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <button id="getLocation" class="button is-primary">
+                  <button id="getLocation" type="button"class="button is-primary">
                     <span class="icon">
                       <i class="far fa-compass"></i>
                     </span>
@@ -246,7 +237,8 @@
                 <p class="control">
                   <input
                     class="input"
-                    id="lat"
+                    id="latitude"
+                    name="latitude"
                     type="text"
                     placeholder="38.988133"
                   />
@@ -264,7 +256,8 @@
                 <p class="control">
                   <input
                     class="input"
-                    id="lng"
+                    id="longitude"
+                    name="longitude"
                     type="text"
                     placeholder="-76.941566"
                   />
@@ -286,7 +279,7 @@
               <div class="field-body">
                 <div class="field is-narrow">
                   <p class="control is-expanded">
-                    <input id="date" class="input" type="text" placeholder="YYYY-MM-DD" />
+                    <input name="date" class="input" type="text" placeholder="YYYY-MM-DD" />
                   </p>
                 </div>
               </div>
@@ -299,7 +292,7 @@
               <div class="field-body">
                 <div class="field is-narrow">
                   <p class="control is-expanded">
-                    <input id="time" class="input" type="text" placeholder="HH:MM" />
+                    <input name="time" class="input" type="text" placeholder="HH:MM" />
                   </p>
                 </div>
               </div>
@@ -318,6 +311,7 @@
               <div class="field">
                 <div class="control">
                   <input
+		    name="cleanupType"
                     class="input is-danger"
                     type="text"
                     placeholder="i.e. Roadside Litter Pickup"
@@ -336,6 +330,7 @@
               <div class="field">
                 <div class="control">
                   <input
+		    name="litterType"
                     class="input is-danger"
                     type="text"
                     placeholder="i.e. Garbage bags"
@@ -354,6 +349,7 @@
               <div class="field">
                 <p class="control is-expanded">
                   <input
+		    name="litterAmount"
                     class="input"
                     type="text"
                     placeholder="Number of bags/lbs collected"
@@ -363,11 +359,11 @@
               <div class="field is-narrow">
                 <div class="control">
                   <label class="radio">
-                    <input type="radio" name="member" />
+                    <input id="bags" type="radio" name="amount" />
                     bags
                   </label>
                   <label class="radio">
-                    <input type="radio" name="member" />
+                    <input id="pounds" type="radio" name="amount" />
                     lbs
                   </label>
                 </div>
@@ -383,6 +379,7 @@
               <div class="field">
                 <div class="control">
                   <textarea
+		    name="notes"
                     class="textarea"
                     placeholder="Additional remarks"
                   ></textarea>
@@ -398,7 +395,7 @@
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <button class="button is-primary">
+                  <button id="submitB" class="button is-primary">
                     Submit Form
                   </button>
                 </div>

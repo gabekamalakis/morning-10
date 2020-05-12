@@ -11,15 +11,10 @@ async function createTables(dbSettings, data) {
 		console.log('Dropping existing databases...');
 		await db.exec('DROP TABLE IF EXISTS user');
 		console.log('Database cleared.');
-		await db.exec('CREATE TABLE IF NOT EXISTS user (name, email, phoneNumber, organization, trashType, weight, numBags, longitude, latitude)');
+		await db.exec('CREATE TABLE IF NOT EXISTS user (name, email, phoneNumber, organization, orgNumber, datetime, cleanuptype, litterType, weight, numBags, notes, longitude, latitude)');
 
-		// This is a check to see if it's working
-		// const result  = await db.each('SHOW TABLES;', (err) => {
-		// 	console.log('createTables', err);
-		// 	});
 		result = "Success";
 		console.log("Database Initialized");
-		// return result;
 	}
 	catch(e) {
 		result = "Failure";
@@ -31,19 +26,15 @@ async function createTables(dbSettings, data) {
 		try {
 		const db = await open(dbSettings);
 		data.forEach((item) => {
-			const itemname = "null";
-			const itememail = "null";
-			const itemphoneNumber = "null";
 			const itemorganization = item.organization;
-			const itemtrashType = item.type_litter;
-			const itemweight = "null";
+			const itemlitterType = item.type_litter;
 			const itemnumBags = item.total_bags_litter;
 			const itemlongitude = item.geocoded_column.longitude;
 			const itemlatitude = item.geocoded_column.latitude;
-			db.exec(`INSERT INTO user (name, email, phoneNumber, organization, trashType, weight, numBags, longitude, latitude) VALUES ("${itemname}", "${itememail}", "${itemphoneNumber}", "${itemorganization}", "${itemtrashType}", "${itemweight}", "${itemnumBags}", "${itemlongitude}", "${itemlatitude}")`);
+			db.exec(`INSERT INTO user (organization, litterType, numBags, longitude, latitude) VALUES ("${itemorganization}", "${itemlitterType}", "${itemnumBags}", "${itemlongitude}", "${itemlatitude}")`);
 
         	});
-			console.log('Data inputed succesfully');
+			console.log('Data loaded succesfully');
 
 		}
 		catch(e) {
@@ -51,15 +42,46 @@ async function createTables(dbSettings, data) {
 		}
 	}
 
-	return null
+	return result;
 
 }
 
-async function addPickup(dbSettings, name, email, phoneNumber, trashType, weight, numBags, longitude, latitude) {
-	const db = open(dbSettings);
-	await db.exec(`INSERT INTO user (name, email, phoneNumber, trashType, weight, numBags, longitude, latitude) VALUES (${name}, ${email}, ${phoneNumber}, ${trashType}, ${weight}, ${numBags}, ${longitude}, ${latitude})`)
+async function addPickup(dbSettings, jobject) {
+	console.log("Inserting Form data...");
 
+	const name = jobject.name;
+	const email = jobject.email;
+	const phoneNumber = jobject.phoneNumber;
+	const organization = jobject.organization;
+	const orgNumber = jobject.orgNumber;
+	const datetime = jobject.datetime;
+	const cleanuptype = jobject.cleanupType;
+	const litterType = jobject.litterType;
+	// This needs to be an integer/float
+	const weight = jobject.weight;
+	const numBags = jobject.numBags
+
+	const notes = jobject.notes;
+
+	// These need to be converted to floats
+	const longitude = jobject.longitude;
+	const latitude = jobject.latitude;
+
+	try {
+		const db = await open(dbSettings);
+
+		await db.exec(`INSERT INTO user (name, email, phoneNumber, organization, orgNumber, datetime, cleanupType, litterType, weight, numBags, notes, longitude, latitude) VALUES ("${name}", "${email}", "${phoneNumber}", "${organization}", "${orgNumber}", "${datetime}", "${cleanuptype}", "${litterType}", "${weight}", "${numBags}", "${notes}", "${longitude}", "${latitude}")`);
+		const test = await db.get(`SELECT * from user where name = "${name}"`);
+		console.log(test);
+		return "Success"
+
+	} catch(e) {
+		console.log("Database Error on insert");
+		return "Failure";
+	}
 }
+
+
 
 module.exports = {
 	createTables,
