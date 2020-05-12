@@ -23,7 +23,20 @@ Link to PG County open data set:
 ``https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner``
 
 ## Strategies and Solutions
-???
+
+- Consistently Updated Dataset 
+  -Two main options:
+    -Crowdsourcing and accepting the risk of some inaccurate data 
+    -Contracting to a third-party to obtain data
+- Maps
+  -How to visually represent the dataset so it is easy to view is important to the user.
+   -Either a heatmap or pop-up would be the easiest to convey to the user.
+    -Heatmaps
+      -Shows hotspots of litter at a glance
+      -Heatmaps do not show specifics of datapoints.
+    -Pop-ups
+      -Shows specific date and time of each datapoint
+      -Pop-ups might appear too cluttered.
 
 ## Technical System Decision Rationale
 
@@ -39,10 +52,20 @@ Link to PG County open data set:
   - Used for reliable and flexible testing for browser based applications.
 
 ## How the final system addresses the problem
-???
+
+- Visually Appealing
+  - The homepage shows the public's opion about the app (very important for businesses that are just starting).
+  - The heatmap is easy to read.
+ -User Input/Crowdsourcing 
+  -Having the data come from crowdsourcing reduces burden on the developers to keep the dataset updated.
+  -The submission page is straight-forward. It is quick and easy to submit for the users. 
+ 
 
 ## Challenges
-???
+
+- False Positives
+  - Keeping the database frequently updated 
+  - Some litter might be picked up fast, or by someone not aware of LitterLog, and it remains in the database.
 
 ## Future Work
 
