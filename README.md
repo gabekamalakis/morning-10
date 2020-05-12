@@ -1,4 +1,5 @@
 # LitterLog
+Application by Morning 10: Gabe Kamalakis, Andrew Garcia, Sarwat Kazmi, Brigidanna Crews, Adam Fiergang
 ### Track and visualize PG County litter
 
 LitterLog is a web-based application created by University of Maryland students,
