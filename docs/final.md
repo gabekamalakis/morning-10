@@ -25,18 +25,18 @@ Link to PG County open data set:
 ## Strategies and Solutions
 
 - Consistently Updated Dataset 
-  -Two main options:
-    -Crowdsourcing and accepting the risk of some inaccurate data 
-    -Contracting to a third-party to obtain data
+  - Two main options:
+    - Crowdsourcing and accepting the risk of some inaccurate data 
+    - Contracting to a third-party to obtain data
 - Maps
-  -How to visually represent the dataset so it is easy to view is important to the user.
-   -Either a heatmap or pop-up would be the easiest to convey to the user.
-    -Heatmaps
-      -Shows hotspots of litter at a glance
-      -Heatmaps do not show specifics of datapoints.
-    -Pop-ups
-      -Shows specific date and time of each datapoint
-      -Pop-ups might appear too cluttered.
+  - How to visually represent the dataset so it is easy to view is important to the user.
+   - Either a heatmap or pop-up would be the easiest to convey to the user.
+    - Heatmaps
+      - Shows hotspots of litter at a glance
+      - Heatmaps do not show specifics of datapoints.
+    - Pop-ups
+      - Shows specific date and time of each datapoint
+      - Pop-ups might appear too cluttered.
 
 ## Technical System Decision Rationale
 
