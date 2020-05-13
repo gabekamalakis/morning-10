@@ -1,13 +1,15 @@
 // Required Modules
 import express from "express";
 import fetch from "node-fetch";
-
-const bodyParser = require("body-parser");
-const { createTables, addPickup } = require("./server/sqlCommands");
-
-// Importing SQLite
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
+
+const bodyParser = require("body-parser");
+const { addPickup }  = require("./server/sqlCommands");
+const { initializeDatabase, locationFetcher } = require("./server/dbstartup");
+
+
+// SQLite Settings
 
 const dbSettings = {
 	filename: './tmp/database.db',
@@ -15,7 +17,7 @@ const dbSettings = {
 };
 
 // SERVER STARTUP AND DATA LOADING
-initializeDatabase();
+initializeDatabase(dbSettings);
 
 /// APPLICATION
 // Express settings
@@ -32,7 +34,7 @@ app.listen(port, () =>
   console.log(`LitterLogger server listening on port ${port}!`)
 );
 
-// App Endpoints
+// App Routing (Endpoints)
 app.route("/api")
 	.get(async (req, res) => {
   		processDataForMap(req, res);
@@ -41,7 +43,7 @@ app.route("/api")
 		await processForms(req, res);
 });
 
-// Data Fetching function (Async-Await for much better readability and less headbanging)
+// Data Fetching function
 async function processDataForMap(req, res) {
 	try {
 		// Fetch from Database
@@ -77,39 +79,3 @@ async function processForms(req, res) {
 	}
 };
 
-// Database loading function
-async function initializeDatabase() {
-	const baseURL = "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json";
-	const response = await fetch(baseURL);
-	let dbstatus = "";
-	try {
-		const data = await response.json()
-		await databaseLoader(data);
-		dbstatus = "success";
-
-	} catch(e) {
-		console.log("Database Failure");
-		dbstatus = "failure";
-
-	}
-
-	return dbstatus
-}
-
-async function databaseLoader(data) {
-	(async () => {
-		try {
-			const db = await open(dbSettings);
-			await createTables(dbSettings, data);
-		}
-		catch(e) {
-			console.log("Error Loading Database");
-		};
-	})();
-};
-
-async function locationFetcher(Settings) {
-	const db = await open(Settings);
-	const query = await db.all("Select latitude, longitude, numBags from user");
-	return query;
-};
