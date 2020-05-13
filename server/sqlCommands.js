@@ -47,7 +47,7 @@ async function createTables(dbSettings, data) {
 }
 
 async function addPickup(dbSettings, jobject) {
-	console.log("Inserting Form data...");
+	// console.log("Inserting Form data...");
 
 	const name = jobject.name;
 	const email = jobject.email;

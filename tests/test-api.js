@@ -18,6 +18,19 @@ describe('GET /api', () => {
 	});
 });
 
+describe('GET /api datatest', () => {
+	it('Should respond with mapdata', done => {
+		chai
+			.request('http://localhost:3000')
+			.get('/api')
+			.end((err, res) => {
+				res.should.have.status(200)
+				res.body.should.be.a('array');
+				done();
+			});
+	});
+});
+
 describe('PUT /api ', () => {
 	it('Should accept PUT request', done => {
 		chai
@@ -25,7 +38,7 @@ describe('PUT /api ', () => {
 			.put('/api')
 			.end((err, res) => {
 				res.should.have.status(200);
-				expect(res).to.have.be.json;
+				// expect(res.body).to.have.param("status", "Success");
 				done();
 			});
 	});

@@ -1,8 +1,6 @@
 // Required Modules
 import express from "express";
-import fetch from "node-fetch";
 import sqlite3 from "sqlite3";
-import { open } from "sqlite";
 
 const bodyParser = require("body-parser");
 const { addPickup }  = require("./server/sqlCommands");
@@ -59,17 +57,14 @@ async function processDataForMap(req, res) {
 
 // Loading Form data to database function
 async function processForms(req, res) {
-	console.log(req.body);
 
 	if (!req.body) {
-		console.log(req.body);
 		res.status("400").json("Please do not leave any fields blank");
 	}
 	else {
 		try {
 			const result = await addPickup(dbSettings, req.body);
-			console.log("Status: ", result);
-			res.json("Request received");
+			res.send({ "status":result });
 		}
 		catch(e) {
 			console.log("Error submitting data");
