@@ -49,6 +49,8 @@
     "css-postcss": "postcss --use autoprefixer --output public/css/main.css public/css/main.css",
     "css-watch": "npm run css-build -- --watch",
     "nodemon": "nodemon --exec babel-node server.js",
+
     "start": "rm -rf tmp && mkdir tmp && npm-run-all --parallel css-watch nodemon"
+
   }
 }
