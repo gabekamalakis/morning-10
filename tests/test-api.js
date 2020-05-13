@@ -18,3 +18,16 @@ describe('GET /api', () => {
 	});
 });
 
+describe('PUT /api ', () => {
+	it('Should accept PUT request', done => {
+		chai
+			.request('http://localhost:3000')
+			.put('/api')
+			.end((err, res) => {
+				res.should.have.status(200);
+				expect(res).to.have.be.json;
+				done();
+			});
+	});
+});
+
