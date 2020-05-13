@@ -27,7 +27,6 @@ async function databaseLoader(dbSettings, data) {
 	(async () => {
 		try {
 			const db = await open(dbSettings);
-			console.log("So you've gotten this far");
 			await createTables(dbSettings, data);
 		}
 		catch(e) {
