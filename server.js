@@ -1,21 +1,23 @@
 // Required Modules
 import express from "express";
-import fetch from "node-fetch";
+import sqlite3 from "sqlite3";
 
 const bodyParser = require("body-parser");
-const { createTables, addPickup } = require("./server/sqlCommands");
+const { addPickup }  = require("./server/sqlCommands");
+const { initializeDatabase, locationFetcher } = require("./server/dbstartup");
 
-// Importing SQLite
-import sqlite3 from "sqlite3";
-import { open } from "sqlite";
+
+// SQLite Settings
 
 const dbSettings = {
 	filename: './tmp/database.db',
 	driver: sqlite3.Database,
 };
 
+
+
 // SERVER STARTUP AND DATA LOADING
-initializeDatabase();
+const db = initializeDatabase(dbSettings);
 
 /// APPLICATION
 // Express settings
@@ -28,11 +30,11 @@ app.use(bodyParser.json());
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
 
 
-app.listen(port, () =>
-  console.log(`LitterLogger server listening on port ${port}!`)
+const server = app.listen(port, () =>
+  	console.log(`LitterLogger server listening on port ${port}!`)
 );
 
-// App Endpoints
+// App Routing (Endpoints)
 app.route("/api")
 	.get(async (req, res) => {
   		processDataForMap(req, res);
@@ -41,7 +43,7 @@ app.route("/api")
 		await processForms(req, res);
 });
 
-// Data Fetching function (Async-Await for much better readability and less headbanging)
+// Data Fetching function
 async function processDataForMap(req, res) {
 	try {
 		// Fetch from Database
@@ -57,17 +59,14 @@ async function processDataForMap(req, res) {
 
 // Loading Form data to database function
 async function processForms(req, res) {
-	console.log(req.body);
 
 	if (!req.body) {
-		console.log(req.body);
 		res.status("400").json("Please do not leave any fields blank");
 	}
 	else {
 		try {
 			const result = await addPickup(dbSettings, req.body);
-			console.log("Status: ", result);
-			res.json("Request received");
+			res.send({ "status":result });
 		}
 		catch(e) {
 			console.log("Error submitting data");
@@ -77,39 +76,4 @@ async function processForms(req, res) {
 	}
 };
 
-// Database loading function
-async function initializeDatabase() {
-	const baseURL = "https://data.princegeorgescountymd.gov/resource/9tsa-iner.json";
-	const response = await fetch(baseURL);
-	let dbstatus = "";
-	try {
-		const data = await response.json()
-		await databaseLoader(data);
-		dbstatus = "success";
-
-	} catch(e) {
-		console.log("Database Failure");
-		dbstatus = "failure";
-
-	}
-
-	return dbstatus
-}
-
-async function databaseLoader(data) {
-	(async () => {
-		try {
-			const db = await open(dbSettings);
-			await createTables(dbSettings, data);
-		}
-		catch(e) {
-			console.log("Error Loading Database");
-		};
-	})();
-};
-
-async function locationFetcher(Settings) {
-	const db = await open(Settings);
-	const query = await db.all("Select latitude, longitude, numBags from user");
-	return query;
-};
+module.exports = { db, server }

@@ -47,7 +47,7 @@ async function createTables(dbSettings, data) {
 }
 
 async function addPickup(dbSettings, jobject) {
-	console.log("Inserting Form data...");
+	// console.log("Inserting Form data...");
 
 	const name = jobject.name;
 	const email = jobject.email;
@@ -72,7 +72,6 @@ async function addPickup(dbSettings, jobject) {
 
 		await db.exec(`INSERT INTO user (name, email, phoneNumber, organization, orgNumber, datetime, cleanupType, litterType, weight, numBags, notes, longitude, latitude) VALUES ("${name}", "${email}", "${phoneNumber}", "${organization}", "${orgNumber}", "${datetime}", "${cleanuptype}", "${litterType}", "${weight}", "${numBags}", "${notes}", "${longitude}", "${latitude}")`);
 		const test = await db.get(`SELECT * from user where name = "${name}"`);
-		console.log(test);
 		return "Success"
 
 	} catch(e) {

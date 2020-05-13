@@ -34,15 +34,23 @@
   },
   "homepage": "https://github.com/gabekamalakis/morning-10#readme",
   "devDependencies": {
-    "mocha": "^7.1.2"
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/register": "^7.9.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "core-js": "^3.6.5",
+    "mocha": "^7.1.2",
+    "regenerator-runtime": "^0.13.5"
   },
   "scripts": {
-    "test": "echo 'No tests created'",
+    "test": "rm -rf tmp && mkdir tmp && mocha --require @babel/register --exit tests/test-api",
     "css-deploy": "npm run css-build && npm run css-postcss",
     "css-build": "node-sass public/sass/main.scss public/css/main.css",
     "css-postcss": "postcss --use autoprefixer --output public/css/main.css public/css/main.css",
     "css-watch": "npm run css-build -- --watch",
     "nodemon": "nodemon --exec babel-node server.js",
-    "start": "mkdir tmp && npm-run-all --parallel css-watch nodemon"
+
+    "start": "rm -rf tmp && mkdir tmp && npm-run-all --parallel css-watch nodemon"
+
   }
 }
