@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/register": "^7.9.0",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
@@ -34,8 +36,6 @@
   },
   "homepage": "https://github.com/gabekamalakis/morning-10#readme",
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.9.6",
-    "@babel/register": "^7.9.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "core-js": "^3.6.5",
