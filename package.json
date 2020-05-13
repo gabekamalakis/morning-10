@@ -43,7 +43,7 @@
     "regenerator-runtime": "^0.13.5"
   },
   "scripts": {
-    "test": "mocha --require @babel/register --exit tests/test-api",
+    "test": "rm -rf tmp && mkdir tmp && mocha --require @babel/register --exit tests/test-api",
     "css-deploy": "npm run css-build && npm run css-postcss",
     "css-build": "node-sass public/sass/main.scss public/css/main.css",
     "css-postcss": "postcss --use autoprefixer --output public/css/main.css public/css/main.css",

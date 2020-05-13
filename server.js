@@ -14,8 +14,10 @@ const dbSettings = {
 	driver: sqlite3.Database,
 };
 
+
+
 // SERVER STARTUP AND DATA LOADING
-initializeDatabase(dbSettings);
+const db = initializeDatabase(dbSettings);
 
 /// APPLICATION
 // Express settings
@@ -28,8 +30,8 @@ app.use(bodyParser.json());
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
 
 
-app.listen(port, () =>
-  console.log(`LitterLogger server listening on port ${port}!`)
+const server = app.listen(port, () =>
+  	console.log(`LitterLogger server listening on port ${port}!`)
 );
 
 // App Routing (Endpoints)
@@ -73,3 +75,5 @@ async function processForms(req, res) {
 		};
 	}
 };
+
+module.exports = { db, server }
