@@ -39,7 +39,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "core-js": "^3.6.5",
-    "mocha": "^7.1.2",
+    "mocha": "^10.2.0",
     "regenerator-runtime": "^0.13.5"
   },
   "scripts": {
